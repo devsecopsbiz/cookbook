@@ -1,0 +1,3 @@
+ROM microsoft/windowsservercore
+ADD publish/ /
+ENTRYPOINT wasp-zap-vsts-tool.exe
