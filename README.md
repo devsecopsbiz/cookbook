@@ -11,9 +11,6 @@ As such, buzz words like _DevSecOps_ and even _DevSecOpsBiz_ are becoming more p
 
 This lab session builds on top of _AI-APP-ST201: The new trends of Dev*Ops (DEV-SEC-OPS-BIZ)_, allowing you to experience first hand the construction of a real world scenario.
 
-## add information regarding dev*ops for people that haven't seen the breakout session
-## blur images
-
 ## Prerequisites 
 Before we get started we need to ensure some prerequisites required for the lab.
 
