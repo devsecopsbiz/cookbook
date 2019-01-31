@@ -44,31 +44,29 @@ This workshop will guide you through the initial setup of an Azure DevOps Projec
 * Start by creating a new Project using a preselected [Lab](https://azuredevopsdemogenerator.azurewebsites.net/?name=WhiteSource-Bolt&templateid=77362)
     1. Navigate to the Azure DevOps Demo Generator and *Sign In* with the credentials you've used to create the Azure DevOps Organization:
     
-        ![Azure DevOps Demo Generator - Sign In](img/AzureDevOpsLab-SignIn.png)
+        <img src="img/AzureDevOpsLab-SignIn.png" width="800" />
 
     2. Select your Organization from the dropdown, fill in the Project Name, and *Create Project*:
 
-        ![Azure DevOps Demo Generator - Create Project](img/AzureDevOpsLab-CreateProject-01.png)
-
+        <img src="img/AzureDevOpsLab-CreateProject-01.png" width="800" />
+    
     3. Wait for a few seconds for the project to create and then *Navigate* to it:
 
-        ![Azure DevOps Demo Generator - Create Project](img/AzureDevOpsLab-CreateProject-02.png)
+        <img src="img/AzureDevOpsLab-CreateProject-02.png" width="400" />
 
 * Import additional Git repos, required for the labs:
 
     1. Navigate to *Repos* and on the upper repositories drop down, select *Import repository*:
 
-        ![Azure DevOps Demo Generator - Navigate to Project](img/AzureDevOpsLab-ImportRepo.png)
+        <img src="img/AzureDevOpsLab-ImportRepo.png" width="800" />
 
-    2. Fill in the *Clone URL* with    `https://github.com/Microsoft/SmartHotel360-Website.git`
+    2. Fill in the *Clone URL* with `https://github.com/Microsoft/SmartHotel360-Website.git`
     and press *Import*:
 
-        ![Azure DevOps Demo Generator - Navigate to Project](img/AzureDevOpsLab-CloneURL.png)
+        <img src="img/AzureDevOpsLab-ImportRepo-CloneURL.png" width="400">
 
     3. Select *Import repository* again, now filling with     `https://github.com/Deliveron/owasp-zap-vsts-extension.git`
-    and press *Import*:
-
-        ![Azure DevOps Demo Generator - Navigate to Project](img/AzureDevOpsLab-CloneURL.png)
+    and press *Import*.
 
 
 ## Next step:  
@@ -86,28 +84,28 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
 
 * Wait a few seconds for the import process to finish and navigate to *Pipelines*, *Builds*:
 
-    ![Navigate to Pipelines, Build](img/AzureDevOpsLab-Builds-01.png)
+    <img src="img/AzureDevOpsLab-Builds-01.png" width="400">
 
     ### WhiteSource Bolt Build
     1. Under *New*, select *Import a pipeline* to import a precooked pipeline to build the recently imported repo:
 
-        ![Import a build pipeline](img/AzureDevOpsLab-Builds-02.png)
-
+        <img src="img/AzureDevOpsLab-Builds-02.png" width="800">
+        
     2. Drag and drop the `SmartHotel_Petchecker-Web.json` file, or Browse for the same file. Then, press *Import* to start the import process:
 
-        ![Start the build pipeline import process](img/AzureDevOpsLab-Builds-03.png)
+        <img src="img/AzureDevOpsLab-Builds-03.png" width="400">
     
     3. Select the `Hosted VS2017` Agent pool:
 
-        ![Build pipeline agent pool](img/AzureDevOpsLab-Builds-04.png)
-
+        <img src="img/AzureDevOpsLab-Builds-04.png" width="800">
+  
     4. Now select the Source Repo to the recently imported repository:
 
-        ![Build pipeline Source repo](img/AzureDevOpsLab-Builds-05.png)
+        <img src="img/AzureDevOpsLab-Builds-05.png" width="800">
 
     5. To finish, enable the *Continuous integration* trigger, saving the build after it:
 
-        ![Build pipeline trigger](img/AzureDevOpsLab-Builds-trigger.png)
+        <img src="img/AzureDevOpsLab-Builds-trigger.png" width="800">
 
     ### OWASP Build
     
@@ -120,64 +118,64 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
 
 * Under *Pipelines*, navigate to *Releases* and press `New pipeline`
 
-     ![Releases pipeline](img/AzureDevOpsLab-Releases-01.png)
+    <img src="img/AzureDevOpsLab-Releases-01.png" width="800">
 
     1. We first need to create a dummy, empty, Release pipeline in order for the *Import* to become available. 
     Let's do this by pressing `New pipeline`, `Empty job` and `Save`:
 
-    ![Select empty process](img/AzureDevOpsLab-Releases-02.png)
+    <img src="img/AzureDevOpsLab-Releases-02.png" width="800">
 
     2. Navigate back to `All pipelines` and `Import a release pipeline`:
 
-    ![All pipelines](img/AzureDevOpsLab-Releases-04.png)
+    <img src="img/AzureDevOpsLab-Releases-04.png" width="800">
 
-    ![Import release pipeline](img/AzureDevOpsLab-Releases-05.png)
+    <img src="img/AzureDevOpsLab-Releases-05.png" width="400">
 
     3. Drag and drop, or navigate, to select the `SmartHotel360_Website-Deploy.json` file:
 
-    ![Import release pipeline](img/AzureDevOpsLab-Releases-06.png)
+    <img src="img/AzureDevOpsLab-Releases-06.png" width="400">
 
     4. Press *OK* to start the import process. You should now have a release pipeline like this:
 
-    ![Import release pipeline](img/AzureDevOpsLab-Releases-07.png)
+    <img src="img/AzureDevOpsLab-Releases-07.png" width="800">
 
     5. Navigate to the Stage tasks:
 
-    ![Import release pipeline](img/AzureDevOpsLab-Releases-08.png)
+    <img src="img/AzureDevOpsLab-Releases-08.png" width="800">
 
     6. Select the first task and, under *Azure Subscription*, press `New`:
 
-    ![Release pipeline CD trigger](img/AzureDevOpsLab-Releases-09.png)
+    <img src="img/AzureDevOpsLab-Releases-09.png" width="800">
 
     7. This opens a pop up where we'll have to fill in the details of our *Azure Subscription*, where we'll be deploying out solution:
 
-    > Step in each one of the options with error, selecting and authorizing an Azure Subscription to use in the lab. 
+    > Step in each one of the tasks with error, selecting and authorizing an Azure Subscription to use in the lab. 
 
     8. To finish, enable the Continuous Deployment trigger
 
-    ![Import release pipeline](img/AzureDevOpsLab-Releases-trigger.png)
-    
+    <img src="img/AzureDevOpsLab-Releases-trigger.png" width="800">
+
 
 #### Run a test build
 
 1. In Azure DevOps, click on Builds, select each build and click the "Queue" button on the right upper corner.
 
-    ![Azure DevOps Build](img/AzureDevOpsLab-Builds-Run-01.png)
+    <img src="img/AzureDevOpsLab-Builds-Run-01.png" width="800">
 
 2. Monitor the builds and wait for the build to complete
 
-    ![Azure DevOps Build](img/AzureDevOpsLab-Builds-Run-end.png)
+   <img src="img/AzureDevOpsLab-Builds-Run-end.png" width="800">
 
 # ADD INFO TO OPEN WEBSITE AND SEE IT WORKED
 
 3. The release will automatically start when the build is complete (be patient, this can take some time). Review the results as it is complete. 
 
-    ![Azure DevOps Release](img/AzureDevOpsLab-Releases-Run-executing.png)
+   <img src="img/AzureDevOpsLab-Releases-Run-executing.png" width="800">
 
 4. Now kick-off the full CI/CD pipeline by making an edit to the  code in the Azure DevOps code repo.
 Navigate back to *Repos*, *SmartHotel360-Website* repo, select `appsettings.Development.json` and press *Edit*
 
-    ![Repo change to trigger CI CD](img/AzureDevOpsLab-Repo-edit.png)
+    <img src="img/AzureDevOpsLab-Repo-edit.png" width="800">
 
 5. Change the *Name* property value to something you want, and *Commit* the change after it
 
@@ -201,11 +199,11 @@ This lab will guide you through adding some Security validations into our pipeli
 
 2. Select each build pipeline, click the "Edit" button, and select the `WhiteSource Bolt` task
 
-    ![WhiteSource Bolt task](img/AzureDevOpsLab-Builds-WhiteSourceBolt.png)
+    <img src="img/AzureDevOpsLab-Builds-WhiteSourceBolt.png" width="800">
 
 3. Now navigate to *Pipelines*, *WhiteSource Bolt* on the left and explore the generated reports
 
-    ![WhiteSource Bolt report](img/AzureDevOpsLab-Builds-WhiteSourceBolt-report.png)
+    <img src="img/AzureDevOpsLab-Builds-WhiteSourceBolt-report.png" width="800">
 
 
 ## Add OWASP ZAP penetration testing tool to the Release pipeline
@@ -219,26 +217,26 @@ https://docs.microsoft.com/en-us/azure/virtual-machines/linux/dockerextension
 2. Start by obtaining a personal access token (PAT) for later use.
 > Save that PAT token, it can't be retrieved later!
 
-![Navigate to User Security](img/PAT-token-security.png)
-![Generate PAT Token](img/PAT-token-navigate.png)
-![Generate PAT Token](img/PAT-token-create.png)
-![Copy PAT Token](img/PAT-token.png)
+<img src="img/PAT-token-security.png" width="800">
+<img src="img/PAT-token-navigate.png" width="400">
+<img src="img/PAT-token-create.png" width="400">
+<img src="img/PAT-token.png" width="400">
 
 
 Now let's add some `Command` tasks to our release pipeline, one for attaching the generated analysis report and another to be able to create bugs if necessary:
 
-![Add OWASP task](img/Add-OWASP-tasks-navigate.png)
-![Add OWASP task](img/Add-OWASP-tasks-search.png)
+<img src="img/Add-OWASP-tasks-navigate.png" width="800">
+<img src="img/Add-OWASP-tasks-search.png" width="800">
 
 2. Paste this command on the *Script* text box, changing the values in bold*, as seen in the image.
 `$(System.DefaultWorkingDirectory)/owasp-zap-vsts CI/drop/owasp-zap-vsts-tool/bin/Release/owasp-zap-vsts-tool.exe Arguments: attachreport collectionUri="https://myacct.visualstudio.com" teamProjectName="MsReadyLab" releaseUri=$(Release.ReleaseUri) releaseEnvironmentUri=$(Release.EnvironmentUri) filepath=$(System.DefaultWorkingDirectory)\OwaspZapReport.html personalAccessToken=abc123`
 
-![Add OWASP task](img/Add-OWASP-tasks-Report.png)
+<img src="img/Add-OWASP-tasks-Report.png" width="800">
 
 3. Now paste this for the *Create bugs* task.
 `$(System.DefaultWorkingDirectory)/owasp-zap-vsts CI/drop/owasp-zap-vsts-tool/bin/Release/owasp-zap-vsts-tool.exe arguments: createbugfrompentest collectionUri="https://myacct.visualstudio.com" teamProjectName="CLExtended" team=Demo releaseUri=$(Release.ReleaseUri) releaseEnvironmentUri=$(Release.EnvironmentUri) filepath=$(Agent.ReleaseDirectory)\OwaspZapAlerts.xml personalAccessToken=abc123`
 
-![Add OWASP task](img/Add-OWASP-tasks.png)
+<img src="img/Add-OWASP-tasks.png" width="800">
 
 
 ## Next step:  
