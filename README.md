@@ -336,20 +336,23 @@ OWASP is a worldwide not-for-profit organization dedicated to helping improve th
     <img src="img/PAT-token-create.png" width="400">
 
     2.4 Copy the token, making sure you don't lose it.
+
     <img src="img/PAT-token.png" width="400">
 
-3. Now let's add some `Command` tasks to our release pipeline, one for attaching the generated analysis report and another to be able to create bugs if necessary:
+3. Now let's add some `Command Line` tasks to our release pipeline, one for attaching the generated analysis report and another to be able to create bugs if necessary:
 
     <img src="img/Add-OWASP-tasks-navigate.png" width="800">
     <img src="img/Add-OWASP-tasks-search.png" width="800">
 
-4. Paste this command on the *Script* text box, changing the values in bold*, as seen in the image.
-`$(System.DefaultWorkingDirectory)/owasp-zap-vsts CI/drop/owasp-zap-vsts-tool/bin/Release/owasp-zap-vsts-tool.exe Arguments: attachreport collectionUri="https://myacct.visualstudio.com" teamProjectName="MsReadyLab" releaseUri=$(Release.ReleaseUri) releaseEnvironmentUri=$(Release.EnvironmentUri) filepath=$(System.DefaultWorkingDirectory)\OwaspZapReport.html personalAccessToken=abc123`
+4. Paste this command on the *Script* text box, changing the values between `<>`, as seen in the image.
+
+`$(System.DefaultWorkingDirectory)/owasp-zap-vsts CI/drop/owasp-zap-vsts-tool/bin/Release/owasp-zap-vsts-tool.exe Arguments: attachreport collectionUri="<Azure DevOps ORGANIZATION URI>" teamProjectName="MsReadyLab" releaseUri=$(Release.ReleaseUri) releaseEnvironmentUri=$(Release.EnvironmentUri) filepath=$(System.DefaultWorkingDirectory)\OwaspZapReport.html personalAccessToken=<GENERATED PERSONAL ACCESS TOKEN>`
 
     <img src="img/Add-OWASP-tasks-Report.png" width="800">
 
-5. Paste this for the *Create bugs* task.
-`$(System.DefaultWorkingDirectory)/owasp-zap-vsts CI/drop/owasp-zap-vsts-tool/bin/Release/owasp-zap-vsts-tool.exe arguments: createbugfrompentest collectionUri="https://myacct.visualstudio.com" teamProjectName="CLExtended" team=Demo releaseUri=$(Release.ReleaseUri) releaseEnvironmentUri=$(Release.EnvironmentUri) filepath=$(Agent.ReleaseDirectory)\OwaspZapAlerts.xml personalAccessToken=abc123`
+5. Paste this for the *Create bugs* task, changing again the values between `<>`.
+
+`$(System.DefaultWorkingDirectory)/owasp-zap-vsts CI/drop/owasp-zap-vsts-tool/bin/Release/owasp-zap-vsts-tool.exe arguments: createbugfrompentest collectionUri="<Azure DevOps ORGANIZATION URI>" teamProjectName="MsReadyLab" team=Demo releaseUri=$(Release.ReleaseUri) releaseEnvironmentUri=$(Release.EnvironmentUri) filepath=$(Agent.ReleaseDirectory)\OwaspZapAlerts.xml personalAccessToken=<GENERATED PERSONAL ACCESS TOKEN>`
 
     <img src="img/Add-OWASP-tasks.png" width="800">
 
