@@ -166,18 +166,34 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
 
    <img src="img/AzureDevOpsLab-Builds-Run-end.png" width="800">
 
-# ADD INFO TO OPEN WEBSITE AND SEE IT WORKED
-
 3. The release will automatically start when the build is complete (be patient, this can take some time). Review the results as it is complete. 
 
    <img src="img/AzureDevOpsLab-Releases-Run-executing.png" width="800">
 
-4. Now kick-off the full CI/CD pipeline by making an edit to the  code in the Azure DevOps code repo.
+4. Navigate to the deploy logs and check the details regarding the last step, `Deploy SmartHotel Website`.
+
+   <img src="img/AzureDevOpsLab-Releases-CheckOutput-deploytask.png" width="800">
+
+5. Go to the end of the log, and grab the URL of the destination website.
+It should look something like this: `https://smarthotel360lcu4bmxi7kl4w.scm.azurewebsites.net/api/deployments/21548112613183`
+
+    Grab that value.
+
+    <img src="img/AzureDevOpsLab-Releases-CheckOutput-1.png" width="800">
+
+6. Using this, remove the `scm` and `api` details, ending up with a URL like: `https://smarthotel360lcu4bmxi7kl4w.azurewebsites.net/`
+
+    Navigate to the new URL and you should be see the website we've just deployed.
+
+    <img src="img/AzureDevOpsLab-Releases-CheckOutput-site.png" width="800">
+
+
+7. Now kick-off the full CI/CD pipeline by making an edit to the  code in the Azure DevOps code repo.
 Navigate back to *Repos*, *SmartHotel360-Website* repo, select `appsettings.Development.json` and press *Edit*
 
     <img src="img/AzureDevOpsLab-Repo-edit.png" width="800">
 
-5. Change the *Name* property value to something you want, and *Commit* the change after it
+8. Change the *Name* property value to something you want, and *Commit* the change after it
 
     ![Repo change to trigger CI CD](img/AzureDevOpsLab-Repo-commit.png)
 
