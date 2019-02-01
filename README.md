@@ -233,35 +233,125 @@ OWASP is a worldwide not-for-profit organization dedicated to helping improve th
 
 ### Let's start adding it to our pipelines
 
-1. Setup a Docker host
-> Steps to run the commands in Cloud Shell
-> create MD for this
-https://docs.microsoft.com/en-us/azure/virtual-machines/linux/dockerextension
+1. Start by setting up a Docker host for later use:
+
+    ## Deploy a template with the Azure Docker VM extension
+    Let's use an existing quickstart template to create an Ubuntu VM that uses the Azure Docker VM extension to install and configure the Docker host. You can view the template here: [Simple deployment of an Ubuntu VM with Docker](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu). 
+
+    You need to login onto the [Azure Portal](https://portal.azure.com), and access the Cloud Shell, setting it up to *Bash*.
+
+    <img src="img/AzureCloudShell.png" width="800">
+
+    After a few seconds you should see something like this:
+
+    <img src="img/AzureCloudShell-ready.png" width="400">
+
+    Cloud Shell already provides us the latest Azure CLI, allowing us to execute the following commands.
+
+    First, create a resource group named *msReadyDevOps* in the *eastus* location:
+
+    ```azurecli
+    az group create --name msReadyDevOps --location eastus
+    ```
+
+    Next, deploy a VM with that includes the Azure Docker VM extension from [this Azure Resource Manager template on GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu). When prompted, provide your own unique values for *newStorageAccountName*, *adminUsername*, *adminPassword*, and *dnsNameForPublicIP*:
+
+    ```azurecli
+    az group deployment create --resource-group msReadyDevOps \
+        --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/docker-simple-on-ubuntu/azuredeploy.json
+    ```
+
+    It takes a few minutes for the deployment to finish.
 
 
-2. Start by obtaining a personal access token (PAT) for later use.
-> Save that PAT token, it can't be retrieved later!
+    ## Deploy your first NGINX container
+    To view details of your VM, including the DNS name, use [az vm show](/cli/azure/vm):
 
-<img src="img/PAT-token-security.png" width="800">
-<img src="img/PAT-token-navigate.png" width="400">
-<img src="img/PAT-token-create.png" width="400">
-<img src="img/PAT-token.png" width="400">
+    ```azurecli
+    az vm show \
+        --resource-group msReadyDevOps \
+        --name myDockerVM \
+        --show-details \
+        --query [fqdns] \
+        --output tsv
+    ```
+
+    SSH to your new Docker host. Provide your own username and DNS name from the preceding steps:
+
+    ```bash
+    ssh azureuser@mypublicdns.eastus.cloudapp.azure.com
+    ```
+
+    Once logged in to the Docker host, let's run an NGINX container:
+
+    ```bash
+    sudo docker run -d -p 80:80 nginx
+    ```
+
+    The output is similar to the following example as the NGINX image is downloaded and a container started:
+
+    ```bash
+    Unable to find image 'nginx:latest' locally
+    latest: Pulling from library/nginx
+    efd26ecc9548: Pull complete
+    a3ed95caeb02: Pull complete
+    a48df1751a97: Pull complete
+    8ddc2d7beb91: Pull complete
+    Digest: sha256:2ca2638e55319b7bc0c7d028209ea69b1368e95b01383e66dfe7e4f43780926d
+    Status: Downloaded newer image for nginx:latest
+    b6ed109fb743a762ff21a4606dd38d3e5d35aff43fa7f12e8d4ed1d920b0cd74
+    ```
+
+    Check the status of the containers running on your Docker host as follows:
+
+    ```bash
+    sudo docker ps
+    ```
+
+    The output is similar to the following example, showing that the NGINX container is running and TCP ports 80 and 443 and being forwarded:
+
+    ```bash
+    CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS              PORTS                         NAMES
+    b6ed109fb743        nginx               "nginx -g 'daemon off"   About a minute ago   Up About a minute   0.0.0.0:80->80/tcp, 443/tcp   adoring_payne
+    ```
+
+    To see your container in action, open up a web browser and enter the DNS name of your Docker host:
+
+    <img src="img/nginx.png" width="400">
 
 
-Now let's add some `Command` tasks to our release pipeline, one for attaching the generated analysis report and another to be able to create bugs if necessary:
+2. Now let's grab a personal access token (PAT) we'll be needing later on.
+    > Save that PAT token, it can't be retrieved later!
 
-<img src="img/Add-OWASP-tasks-navigate.png" width="800">
-<img src="img/Add-OWASP-tasks-search.png" width="800">
+    2.1 Navigate to the user profile and select *Security*
 
-2. Paste this command on the *Script* text box, changing the values in bold*, as seen in the image.
+    <img src="img/PAT-token-security.png" width="200">
+
+    2.2 Select *Personal access token*
+
+    <img src="img/PAT-token-navigate.png" width="800">
+
+    2.3 Create a new personal access token
+
+    <img src="img/PAT-token-create.png" width="400">
+
+    2.4 Copy the token, making sure you don't lose it.
+    <img src="img/PAT-token.png" width="400">
+
+3. Now let's add some `Command` tasks to our release pipeline, one for attaching the generated analysis report and another to be able to create bugs if necessary:
+
+    <img src="img/Add-OWASP-tasks-navigate.png" width="800">
+    <img src="img/Add-OWASP-tasks-search.png" width="800">
+
+4. Paste this command on the *Script* text box, changing the values in bold*, as seen in the image.
 `$(System.DefaultWorkingDirectory)/owasp-zap-vsts CI/drop/owasp-zap-vsts-tool/bin/Release/owasp-zap-vsts-tool.exe Arguments: attachreport collectionUri="https://myacct.visualstudio.com" teamProjectName="MsReadyLab" releaseUri=$(Release.ReleaseUri) releaseEnvironmentUri=$(Release.EnvironmentUri) filepath=$(System.DefaultWorkingDirectory)\OwaspZapReport.html personalAccessToken=abc123`
 
-<img src="img/Add-OWASP-tasks-Report.png" width="800">
+    <img src="img/Add-OWASP-tasks-Report.png" width="800">
 
-3. Now paste this for the *Create bugs* task.
+5. Paste this for the *Create bugs* task.
 `$(System.DefaultWorkingDirectory)/owasp-zap-vsts CI/drop/owasp-zap-vsts-tool/bin/Release/owasp-zap-vsts-tool.exe arguments: createbugfrompentest collectionUri="https://myacct.visualstudio.com" teamProjectName="CLExtended" team=Demo releaseUri=$(Release.ReleaseUri) releaseEnvironmentUri=$(Release.EnvironmentUri) filepath=$(Agent.ReleaseDirectory)\OwaspZapAlerts.xml personalAccessToken=abc123`
 
-<img src="img/Add-OWASP-tasks.png" width="800">
+    <img src="img/Add-OWASP-tasks.png" width="800">
 
 
 ## Next step:  
