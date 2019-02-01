@@ -91,7 +91,7 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
 
         <img src="img/AzureDevOpsLab-Builds-02.png" width="800">
         
-    2. Drag and drop the `SmartHotel_Petchecker-Web.json` file, or Browse for the same file. Then, press *Import* to start the import process:
+    2. Drag and drop the `SmartHotel_Petchecker-Web.json` file, located on the Lab repository under *~/files/SmartHotel/*, or Browse for the same file. Then, press *Import* to start the import process:
 
         <img src="img/AzureDevOpsLab-Builds-03.png" width="400">
     
@@ -209,7 +209,12 @@ Navigate back to *Repos*, *SmartHotel360-Website* repo, select `appsettings.Deve
 This lab will guide you through adding some Security validations into our pipelines, detecting and fixing security vulnerabilities, but also problematic open source licenses.
 
 ## Review WhiteSource Bolt task configurations on Build
-> TALK A LITTLE ABOUT EACH TASK AND IS THEIR PURPOSE 
+
+*WhiteSource Bolt for Azure DevOps* is a FREE extension, which scans all your projects and detects open source components, their license and known vulnerabilities.
+
+It covers over 200 programming languages support and continuous tracking of multiple open source vulnerabilities databases like the NVD, security advisories, peer-reviewed vulnerability databases, and popular open source projects issue trackers.
+
+### Let's start adding it to our pipelines
 
 1. In Azure DevOps, click on "Pipelines" on the left menu and then click "Builds"
 
@@ -223,6 +228,10 @@ This lab will guide you through adding some Security validations into our pipeli
 
 
 ## Add OWASP ZAP penetration testing tool to the Release pipeline
+
+OWASP is a worldwide not-for-profit organization dedicated to helping improve the quality of software. ZAP is a free penetration testing tool for beginners to professionals. ZAP includes an API and a weekly docker container image that can be integrated into your deployment process
+
+### Let's start adding it to our pipelines
 
 1. Setup a Docker host
 > Steps to run the commands in Cloud Shell
