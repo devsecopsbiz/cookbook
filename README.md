@@ -142,7 +142,7 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
 
 * Under *Pipelines*, navigate to *Releases* and press `New pipeline`
 
-        <img src="img/AzureDevOpsLab-Releases-01.png" width="800">
+    <img src="img/AzureDevOpsLab-Releases-01.png" width="800">
 
     1. We first need to create a dummy, empty, Release pipeline in order for the *Import* to become available. 
     Let's do this by pressing `New pipeline`, `Empty job` and `Save`:
