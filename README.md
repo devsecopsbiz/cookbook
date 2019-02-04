@@ -37,8 +37,6 @@ This workshop will guide you through the initial setup of an Azure DevOps Projec
 
 ## Setup Azure DevOps Project
 
-### Option #1: Azure DevOps Labs ++
-
 >  Use Azure DevOps Labs to create a preconfigured project and enrich it for a quick start.
 
 * Start by creating a new Project using a preselected [Lab](https://azuredevopsdemogenerator.azurewebsites.net/?name=WhiteSource-Bolt&templateid=77362)
@@ -53,6 +51,32 @@ This workshop will guide you through the initial setup of an Azure DevOps Projec
     3. Wait for a few seconds for the project to create and then *Navigate* to it:
 
         <img src="img/AzureDevOpsLab-CreateProject-02.png" width="400" />
+
+* Install additional extensions from the Marketplace:
+
+    1. Navigate to `https://marketplace.visualstudio.com/items?itemName=keesschollaart.arm-outputs`, selecting the *Get it free* button.
+
+        <img src="img/ARMOutputs-navigate.png" width="800" />
+
+    2. Now, select the recently created Azure DevOps Organization on the dropdown, and press *Install*.
+
+        <img src="img/ARMOutputs-install.png" width="300" />
+
+    3. After a few seconds you should see a success message. Now, select the *Proceed to organization*.
+
+        <img src="img/ARMOutputs-success.png" width="300" /> 
+
+* Create a free account for *WhiteSource Bolt* 
+
+    1. Navigate to *WhiteSource Bolt* under *Pipelines -> WhiteSource Bolt*.
+
+    2. Fill in your details to create a free account.
+
+        <img src="img/WhiteSourceBolt-freeaccount.png" width="400" />
+
+    3. After a few seconds, we're good to go!
+
+        <img src="img/WhiteSourceBolt-success.png" width="400" />
 
 * Import additional Git repos, required for the labs:
 
