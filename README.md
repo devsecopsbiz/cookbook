@@ -142,42 +142,50 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
 
 * Under *Pipelines*, navigate to *Releases* and press `New pipeline`
 
-    <img src="img/AzureDevOpsLab-Releases-01.png" width="800">
+        <img src="img/AzureDevOpsLab-Releases-01.png" width="800">
 
     1. We first need to create a dummy, empty, Release pipeline in order for the *Import* to become available. 
     Let's do this by pressing `New pipeline`, `Empty job` and `Save`:
 
-    <img src="img/AzureDevOpsLab-Releases-02.png" width="800">
+        <img src="img/AzureDevOpsLab-Releases-02.png" width="800">
 
     2. Navigate back to `All pipelines` and `Import a release pipeline`:
 
-    <img src="img/AzureDevOpsLab-Releases-04.png" width="800">
+        <img src="img/AzureDevOpsLab-Releases-04.png" width="800">
 
-    <img src="img/AzureDevOpsLab-Releases-05.png" width="400">
+        <img src="img/AzureDevOpsLab-Releases-05.png" width="400">
 
     3. Drag and drop, or navigate, to select the `SmartHotel360_Website-Deploy.json` file:
 
-    <img src="img/AzureDevOpsLab-Releases-06.png" width="400">
+        <img src="img/AzureDevOpsLab-Releases-06.png" width="400">
 
     4. Press *OK* to start the import process. You should now have a release pipeline like this:
 
-    <img src="img/AzureDevOpsLab-Releases-07.png" width="800">
+        <img src="img/AzureDevOpsLab-Releases-07.png" width="800">
 
     5. Navigate to the Stage tasks:
 
-    <img src="img/AzureDevOpsLab-Releases-08.png" width="800">
+        <img src="img/AzureDevOpsLab-Releases-08.png" width="800">
 
     6. Select the first task and, under *Azure Subscription*, press `New`:
 
-    <img src="img/AzureDevOpsLab-Releases-09.png" width="800">
+        <img src="img/AzureDevOpsLab-Releases-09.png" width="800">
 
     7. This opens a pop up where we'll have to fill in the details of our *Azure Subscription*, where we'll be deploying out solution:
 
     > Step in each one of the tasks with error, selecting and authorizing an Azure Subscription to use in the lab. 
 
-    8. To finish, enable the Continuous Deployment trigger
+    9. Remove the existing *Artifact*.
 
-    <img src="img/AzureDevOpsLab-Releases-trigger.png" width="800">
+        <img src="img/RemoveArtifact.png" width="800">
+
+    10. Now, add the `SmartHotel_Petchecker-Web` build artifact. This will make sure we're using the artifact comming from the build we've created before.
+
+        <img src="img/AddArtifact.png" width="800">
+
+    11. To finish, enable the Continuous Deployment trigger
+
+        <img src="img/AzureDevOpsLab-Releases-trigger.png" width="800">
 
 
 #### Run a test build
