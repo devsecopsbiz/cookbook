@@ -352,8 +352,30 @@ OWASP is a worldwide not-for-profit organization dedicated to helping improve th
     <img src="img/nginx.png" width="400">
 
 
-2. Now let's grab a personal access token (PAT) we'll be needing later on.
-    > Save that PAT token, it can't be retrieved later!
+2. Before proceeding any further, let's run a OWASP ZED Attack Proxy against our published website.
+
+    > Note: Replace the website URI with the one you've deployed earlier  
+
+    ```bash
+    docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-weekly zap-baseline.py \
+        -t https://smarthotel360lcu4bmxi7kl4w.azurewebsites.net -g gen.conf -r testreport.html
+    ```
+    Docker image will be pulled and the container will be then executed.
+
+    <img src="img/OWASP-docker-pull.png" width="400">
+
+    When if finishes you should see a summary like this
+
+    <img src="img/OWASP-finish.png" width="400">
+
+    Now take a quick look at the report html
+
+    ```bash
+    cat testreport.html
+    ```
+    
+3. Now let's grab a personal access token (PAT) we'll be needing later on.
+    > Save that PAT token, it can't be retrieved later
 
     2.1 Navigate to the user profile and select *Security*
 
@@ -378,13 +400,13 @@ OWASP is a worldwide not-for-profit organization dedicated to helping improve th
 
 4. Paste this command on the *Script* text box, changing the values between `<>`, as seen in the image.
 
-    `$(System.DefaultWorkingDirectory)/owasp-zap-vsts CI/drop/owasp-zap-vsts-tool/bin/Release/owasp-zap-vsts-tool.exe Arguments: attachreport collectionUri="<Azure DevOps ORGANIZATION URI>" teamProjectName="MsReadyLab" releaseUri=$(Release.ReleaseUri) releaseEnvironmentUri=$(Release.EnvironmentUri) filepath=$(System.DefaultWorkingDirectory)\OwaspZapReport.html personalAccessToken=<GENERATED PERSONAL ACCESS TOKEN>`
+    `$(System.DefaultWorkingDirectory)/owasp-zap-vsts CI/drop/owasp-zap-vsts-tool/bin/Release/owasp-zap-vsts-tool.exe attachreport collectionUri="<Azure DevOps ORGANIZATION URI>" teamProjectName="MsReadyLab" releaseUri=$(Release.ReleaseUri) releaseEnvironmentUri=$(Release.EnvironmentUri) filepath=$(System.DefaultWorkingDirectory)\OwaspZapReport.html personalAccessToken=<GENERATED PERSONAL ACCESS TOKEN>`
 
     <img src="img/Add-OWASP-tasks-Report.png" width="800">
 
 5. Paste this for the *Create bugs* task, changing again the values between `<>`.
 
-    `$(System.DefaultWorkingDirectory)/owasp-zap-vsts CI/drop/owasp-zap-vsts-tool/bin/Release/owasp-zap-vsts-tool.exe arguments: createbugfrompentest collectionUri="<Azure DevOps ORGANIZATION URI>" teamProjectName="MsReadyLab" team=Demo releaseUri=$(Release.ReleaseUri) releaseEnvironmentUri=$(Release.EnvironmentUri) filepath=$(Agent.ReleaseDirectory)\OwaspZapAlerts.xml personalAccessToken=<GENERATED PERSONAL ACCESS TOKEN>`
+    `$(System.DefaultWorkingDirectory)/owasp-zap-vsts CI/drop/owasp-zap-vsts-tool/bin/Release/owasp-zap-vsts-tool.exe createbugfrompentest collectionUri="<Azure DevOps ORGANIZATION URI>" teamProjectName="MsReadyLab" team=Demo releaseUri=$(Release.ReleaseUri) releaseEnvironmentUri=$(Release.EnvironmentUri) filepath=$(Agent.ReleaseDirectory)\OwaspZapAlerts.xml personalAccessToken=<GENERATED PERSONAL ACCESS TOKEN>`
 
     <img src="img/Add-OWASP-tasks.png" width="800">
 
