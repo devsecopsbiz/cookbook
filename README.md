@@ -593,7 +593,3 @@ Choose **Continue** to move to the next tab.
 Analytics views provide you with a great deal of power and flexibility to filter your data and generate useful reports quickly and easily using Power BI. Within a custom view, you can create datasets that span multiple teams or projects. 
 
 *************
-
-## AI-APP-ST300: Hands on Dev*Ops (Dev-Sec-Ops-Biz) 
-
-**END**
