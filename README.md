@@ -42,29 +42,27 @@ This workshop will guide you through the initial setup of an Azure DevOps Projec
     
         ![Azure DevOps Lab Sign In](img/AzureDevOpsLab-SignIn.png)
 
-        <img src="img/AzureDevOpsLab-SignIn.png" width="800" />
-
     2. Select your Organization from the dropdown, fill in the Project Name, and *Create Project*:
 
-        <img src="img/AzureDevOpsLab-CreateProject-01.png" width="800" />
+        ![](img/AzureDevOpsLab-CreateProject-01.png)
     
     3. Wait for a few seconds for the project to create and then *Navigate* to it:
 
-        <img src="img/AzureDevOpsLab-CreateProject-02.png" width="400" />
+        ![](img/AzureDevOpsLab-CreateProject-02.png)
 
 * Install additional extensions from the Marketplace:
 
     1. Navigate to `https://marketplace.visualstudio.com/items?itemName=keesschollaart.arm-outputs`, selecting the *Get it free* button.
 
-        <img src="img/ARMOutputs-navigate.png" width="800" />
+        ![](img/ARMOutputs-navigate.png)
 
     2. Now, select the recently created Azure DevOps Organization on the dropdown, and press *Install*.
 
-        <img src="img/ARMOutputs-install.png" width="300" />
+        ![](img/ARMOutputs-install.png)
 
     3. After a few seconds you should see a success message. Now, select the *Proceed to organization*.
 
-        <img src="img/ARMOutputs-success.png" width="300" /> 
+        ![](img/ARMOutputs-success.png) 
 
 * Create a free account for *WhiteSource Bolt* 
 
@@ -72,22 +70,22 @@ This workshop will guide you through the initial setup of an Azure DevOps Projec
 
     2. Fill in your details to create a free account.
 
-        <img src="img/WhiteSourceBolt-freeaccount.png" width="400" />
+        ![](img/WhiteSourceBolt-freeaccount.png)
 
     3. After a few seconds, we're good to go!
 
-        <img src="img/WhiteSourceBolt-success.png" width="400" />
+        ![](img/WhiteSourceBolt-success.png)
 
 * Import additional Git repos, required for the labs:
 
     1. Navigate to *Repos* and on the upper repositories drop down, select *Import repository*:
 
-        <img src="img/AzureDevOpsLab-ImportRepo.png" width="800" />
+        ![](img/AzureDevOpsLab-ImportRepo.png)
 
     2. Fill in the *Clone URL* with `https://github.com/Microsoft/SmartHotel360-Website.git`
     and press *Import*:
 
-        <img src="img/AzureDevOpsLab-ImportRepo-CloneURL.png" width="400">
+        ![](img/AzureDevOpsLab-ImportRepo-CloneURL.png)
 
     3. Select *Import repository* again, now filling with     `https://github.com/Deliveron/owasp-zap-vsts-extension.git`
     and press *Import*.
@@ -108,28 +106,28 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
 
 * Wait a few seconds for the import process to finish and navigate to *Pipelines*, *Builds*:
 
-    <img src="img/AzureDevOpsLab-Builds-01.png" width="400">
+    ![](img/AzureDevOpsLab-Builds-01.png)
 
     ### WhiteSource Bolt Build
     1. Under *New*, select *Import a pipeline* to import a precooked pipeline to build the recently imported repo:
 
-        <img src="img/AzureDevOpsLab-Builds-02.png" width="800">
+        ![](img/AzureDevOpsLab-Builds-02.png)
         
     2. Drag and drop the `SmartHotel_Petchecker-Web.json` file, located on the Lab repository under *~/files/SmartHotel/*, or Browse for the same file. Then, press *Import* to start the import process:
 
-        <img src="img/AzureDevOpsLab-Builds-03.png" width="400">
+        ![](img/AzureDevOpsLab-Builds-03.png)
     
     3. Select the `Hosted VS2017` Agent pool:
 
-        <img src="img/AzureDevOpsLab-Builds-04.png" width="800">
+        ![](img/AzureDevOpsLab-Builds-04.png)
   
     4. Now select the Source Repo to the recently imported repository:
 
-        <img src="img/AzureDevOpsLab-Builds-05.png" width="800">
+        ![](img/AzureDevOpsLab-Builds-05.png)
 
     5. To finish, enable the *Continuous integration* trigger, saving the build after it:
 
-        <img src="img/AzureDevOpsLab-Builds-trigger.png" width="800">
+        ![](img/AzureDevOpsLab-Builds-trigger.png)
 
     ### OWASP Build
     
@@ -142,34 +140,34 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
 
 * Under *Pipelines*, navigate to *Releases* and press `New pipeline`
 
-    <img src="img/AzureDevOpsLab-Releases-01.png" width="800">
+    ![](img/AzureDevOpsLab-Releases-01.png)
 
     1. We first need to create a dummy, empty, Release pipeline in order for the *Import* to become available. 
     Let's do this by pressing `New pipeline`, `Empty job` and `Save`:
 
-        <img src="img/AzureDevOpsLab-Releases-02.png" width="800">
+        ![](img/AzureDevOpsLab-Releases-02.png)
 
     2. Navigate back to `All pipelines` and `Import a release pipeline`:
 
-        <img src="img/AzureDevOpsLab-Releases-04.png" width="800">
+        ![](img/AzureDevOpsLab-Releases-04.png)
 
-        <img src="img/AzureDevOpsLab-Releases-05.png" width="400">
+        ![](img/AzureDevOpsLab-Releases-05.png)
 
     3. Drag and drop, or navigate, to select the `SmartHotel360_Website-Deploy.json` file:
 
-        <img src="img/AzureDevOpsLab-Releases-06.png" width="400">
+        ![](img/AzureDevOpsLab-Releases-06.png)
 
     4. Press *OK* to start the import process. You should now have a release pipeline like this:
 
-        <img src="img/AzureDevOpsLab-Releases-07.png" width="800">
+        ![](img/AzureDevOpsLab-Releases-07.png)
 
     5. Navigate to the Stage tasks:
 
-        <img src="img/AzureDevOpsLab-Releases-08.png" width="800">
+        ![](img/AzureDevOpsLab-Releases-08.png)
 
     6. Select the first task and, under *Azure Subscription*, press `New`:
 
-        <img src="img/AzureDevOpsLab-Releases-09.png" width="800">
+        ![](img/AzureDevOpsLab-Releases-09.png)
 
     7. This opens a pop up where we'll have to fill in the details of our *Azure Subscription*, where we'll be deploying out solution:
 
@@ -177,53 +175,53 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
 
     9. Remove the existing *Artifact*.
 
-        <img src="img/RemoveArtifact.png" width="800">
+        ![](img/RemoveArtifact.png)
 
     10. Now, add the `SmartHotel_Petchecker-Web` build artifact. This will make sure we're using the artifact comming from the build we've created before.
 
-        <img src="img/AddArtifact.png" width="800">
+        ![](img/AddArtifact.png)
 
     11. To finish, enable the Continuous Deployment trigger
 
-        <img src="img/AzureDevOpsLab-Releases-trigger.png" width="800">
+        ![](img/AzureDevOpsLab-Releases-trigger.png)
 
 
 #### Run a test build
 
 1. In Azure DevOps, click on Builds, select each build and click the "Queue" button on the right upper corner.
 
-    <img src="img/AzureDevOpsLab-Builds-Run-01.png" width="800">
+    ![](img/AzureDevOpsLab-Builds-Run-01.png)
 
 2. Monitor the builds and wait for the build to complete
 
-   <img src="img/AzureDevOpsLab-Builds-Run-end.png" width="800">
+   ![](img/AzureDevOpsLab-Builds-Run-end.png)
 
 3. The release will automatically start when the build is complete (be patient, this can take some time). Review the results as it is complete. 
 
-   <img src="img/AzureDevOpsLab-Releases-Run-executing.png" width="800">
+   ![](img/AzureDevOpsLab-Releases-Run-executing.png)
 
 4. Navigate to the deploy logs and check the details regarding the last step, `Deploy SmartHotel Website`.
 
-   <img src="img/AzureDevOpsLab-Releases-CheckOutput-deploytask.png" width="800">
+   ![](img/AzureDevOpsLab-Releases-CheckOutput-deploytask.png)
 
 5. Go to the end of the log, and grab the URL of the destination website.
 It should look something like this: `https://smarthotel360lcu4bmxi7kl4w.scm.azurewebsites.net/api/deployments/21548112613183`
 
     Grab that value.
 
-    <img src="img/AzureDevOpsLab-Releases-CheckOutput-1.png" width="800">
+    ![](img/AzureDevOpsLab-Releases-CheckOutput-1.png)
 
 6. Using this, remove the `scm` and `api` details, ending up with a URL like: `https://smarthotel360lcu4bmxi7kl4w.azurewebsites.net/`
 
     Navigate to the new URL and you should be see the website we've just deployed.
 
-    <img src="img/AzureDevOpsLab-Releases-CheckOutput-site.png" width="800">
+    ![](img/AzureDevOpsLab-Releases-CheckOutput-site.png)
 
 
 7. Now kick-off the full CI/CD pipeline by making an edit to the  code in the Azure DevOps code repo.
 Navigate back to *Repos*, *SmartHotel360-Website* repo, select `appsettings.Development.json` and press *Edit*
 
-    <img src="img/AzureDevOpsLab-Repo-edit.png" width="800">
+    ![](img/AzureDevOpsLab-Repo-edit.png)
 
 8. Change the *Name* property value to something you want, and *Commit* the change after it
 
@@ -252,11 +250,11 @@ It covers over 200 programming languages support and continuous tracking of mult
 
 2. Select each build pipeline, click the "Edit" button, and select the `WhiteSource Bolt` task
 
-    <img src="img/AzureDevOpsLab-Builds-WhiteSourceBolt.png" width="800">
+    ![](img/AzureDevOpsLab-Builds-WhiteSourceBolt.png)
 
 3. Now navigate to *Pipelines*, *WhiteSource Bolt* on the left and explore the generated reports
 
-    <img src="img/AzureDevOpsLab-Builds-WhiteSourceBolt-report.png" width="800">
+    ![](img/AzureDevOpsLab-Builds-WhiteSourceBolt-report.png)
 
 
 ## Add OWASP ZAP penetration testing tool to the Release pipeline
@@ -272,11 +270,11 @@ OWASP is a worldwide not-for-profit organization dedicated to helping improve th
 
     You need to login onto the [Azure Portal](https://portal.azure.com), and access the Cloud Shell, setting it up to *Bash*.
 
-    <img src="img/AzureCloudShell.png" width="800">
+    ![](img/AzureCloudShell.png)
 
     After a few seconds you should see something like this:
 
-    <img src="img/AzureCloudShell-ready.png" width="400">
+    ![](img/AzureCloudShell-ready.png)
 
     Cloud Shell already provides us the latest Azure CLI, allowing us to execute the following commands.
 
@@ -349,7 +347,7 @@ OWASP is a worldwide not-for-profit organization dedicated to helping improve th
 
     To see your container in action, open up a web browser and enter the DNS name of your Docker host:
 
-    <img src="img/nginx.png" width="400">
+    ![](img/nginx.png)
 
 
 2. Before proceeding any further, let's run a OWASP ZED Attack Proxy against our published website.
@@ -362,11 +360,11 @@ OWASP is a worldwide not-for-profit organization dedicated to helping improve th
     ```
     Docker image will be pulled and the container will be then executed.
 
-    <img src="img/OWASP-docker-pull.png" width="400">
+    ![](img/OWASP-docker-pull.png)
 
     When if finishes you should see a summary like this
 
-    <img src="img/OWASP-finish.png" width="400">
+    ![](img/OWASP-finish.png)
 
     Now take a quick look at the report html
 
@@ -379,36 +377,36 @@ OWASP is a worldwide not-for-profit organization dedicated to helping improve th
 
     2.1 Navigate to the user profile and select *Security*
 
-    <img src="img/PAT-token-security.png" width="200">
+    ![](img/PAT-token-security.png)
 
     2.2 Select *Personal access token*
 
-    <img src="img/PAT-token-navigate.png" width="800">
+    ![](img/PAT-token-navigate.png)
 
     2.3 Create a new personal access token
 
-    <img src="img/PAT-token-create.png" width="400">
+    ![](img/PAT-token-create.png)
 
     2.4 Copy the token, making sure you don't lose it.
 
-    <img src="img/PAT-token.png" width="400">
+    ![](img/PAT-token.png)
 
 3. Now let's add some `Command Line` tasks to our release pipeline, one for attaching the generated analysis report and another to be able to create bugs if necessary:
 
-    <img src="img/Add-OWASP-tasks-navigate.png" width="800">
-    <img src="img/Add-OWASP-tasks-search.png" width="800">
+    ![](img/Add-OWASP-tasks-navigate.png)
+    ![](img/Add-OWASP-tasks-search.png)
 
 4. Paste this command on the *Script* text box, changing the values between `<>`, as seen in the image.
 
     `$(System.DefaultWorkingDirectory)/owasp-zap-vsts CI/drop/owasp-zap-vsts-tool/bin/Release/owasp-zap-vsts-tool.exe attachreport collectionUri="<Azure DevOps ORGANIZATION URI>" teamProjectName="MsReadyLab" releaseUri=$(Release.ReleaseUri) releaseEnvironmentUri=$(Release.EnvironmentUri) filepath=$(System.DefaultWorkingDirectory)\OwaspZapReport.html personalAccessToken=<GENERATED PERSONAL ACCESS TOKEN>`
 
-    <img src="img/Add-OWASP-tasks-Report.png" width="800">
+    ![](img/Add-OWASP-tasks-Report.png)
 
 5. Paste this for the *Create bugs* task, changing again the values between `<>`.
 
     `$(System.DefaultWorkingDirectory)/owasp-zap-vsts CI/drop/owasp-zap-vsts-tool/bin/Release/owasp-zap-vsts-tool.exe createbugfrompentest collectionUri="<Azure DevOps ORGANIZATION URI>" teamProjectName="MsReadyLab" team=Demo releaseUri=$(Release.ReleaseUri) releaseEnvironmentUri=$(Release.EnvironmentUri) filepath=$(Agent.ReleaseDirectory)\OwaspZapAlerts.xml personalAccessToken=<GENERATED PERSONAL ACCESS TOKEN>`
 
-    <img src="img/Add-OWASP-tasks.png" width="800">
+    ![](img/Add-OWASP-tasks.png)
 
 
 ## Next step:  
@@ -457,11 +455,9 @@ In order to create a Power BI report that references an Analytics view, you must
 
 ## Create a view to only include Approved bugs
 
-<img src="img/open-analytics-views-vert.png" width="400">
+![](img/open-analytics-views-vert.png)
 
 From the web portal, **Analytics view**, choose **New View** to create a custom view. Fill out the forms provided in each tab as shown in the steps below. 
-
-
 
 Choose **Continue** to move to the next tab in the panel. If you need to revisit a tab, simply click the tab title. 
 
@@ -469,7 +465,7 @@ Choose **Continue** to move to the next tab in the panel. If you need to revisit
 
 1. Give your view a name, such as *Approved bugs*. Select **Private view** to save it under **My Views**. Otherwise, you can select **Shared view** to save it under **Shared Views**.  
 
-    <img src="img/active-bugs-general.png" width="400">
+    ![](img/active-bugs-general.png)
 
 Choose **Continue** to move to the next tab. 
 
@@ -477,42 +473,42 @@ Choose **Continue** to move to the next tab.
  
     Here we choose the *MsReadyLab* project and the *MsReadyLab Team*.
     
-    <img src="img/active-bugs-team.png" width="400">
+    ![](img/active-bugs-team.png)
 
 	To add additional projects or teams, click *Add row icon* to add a new row and then select the project and team. 
     
 
 3. Under **Backlogs and work items**, add a new row, and then select **Bug** from the list of work items types.
 
-    <img src="img/wi-type-picker-bugs.png" width="400">
+    ![](img/wi-type-picker-bugs.png)
 
 4. Under **Field criteria**, choose the **State** field set to **Active**.
 
-    <img src="img/active-bugs-field-criteria.png" width="400">
+    ![](img/active-bugs-field-criteria.png)
     
 	Choose **Continue** to move to the next tab. 
 
 5. In the next tab, **Fields**, we'll keep the most common fields selection. This selection will also include any custom fields that have been added to your project.  
     
-    <img src="img/fields-common.png" width="400">
+    ![](img/fields-common.png)
 
 	Choose **Continue** to move to the next tab. 
 
 6. In the **History** tab, select **Rolling period in days** and enter **60** days. Keep the **Granularity** set to **Daily**. These selections will generate 60 snapshot rows of data for each approved bug. Each day will include all the details of that work item as it was at the end of that day. 
     
-    <img src="img/active-bugs-history.png" width="400">
+    ![](img/active-bugs-history.png)
 
 	Choose **Continue** to move to the next tab. 
 
 7. On the last tab, **Verification**, click **Verify view**. The system will verify your view by running a test query against the dataset it defines and validate all your filter criteria. 
 
-    <img src="img/active-bugs-verify.png" width="400">
+    ![](img/active-bugs-verify.png)
   
 	> Verification time will vary based on the amount of data defined in your view. Verify your view to make sure all the definitions are correct.  
 
 	Once your view successfully verifies, choose **Save**. You can then start using it in Power BI. Verification also returns an estimate of the number of rows in the dataset and the time it will take to load in Power BI.
 
-    <img src="img/active-bugs-verify-success.png" width="400">
+    ![](img/active-bugs-verify-success.png)
 	
 	If your view fails to verify successfully, you'll get an error explaining the issue and pointing to a possible fix. Try changing the options you selected in the **Work Items** and **History** tabs to include less data, and then verify the view again. 
 
@@ -522,31 +518,31 @@ Choose **Continue** to move to the next tab.
  
 2. Choose (1) **Get Data**, choose (2) **Online Services**, then (3) **Azure DevOps (Beta)**, and then click (4) **Connect**. 
 
-    <img src="img/get-data-2.png" width="400">
+    ![](img/get-data-2.png)
     
 3. Enter your organization name, the same Azure DevOps name you used to create the Active Bugs view, and the same project for which you defined the Active Bugs view. 
 
-    <img src="img/specify-account.png" width="400"> 
+    ![](img/specify-account.png) 
 
 4. Expand the **Private Views** folder, choose the **Approved Bugs** view you saved in the previous section, and then click **Load**. 
 
-    <img src="img/choose-view.png" width="400">
+    ![](img/choose-view.png)
 
 ## Create a daily bug trend report 
 
 1. In your report, (1) select the Line chart visual, (2) enter `work item id` in the search field, and then (3) check the box for **Work Item Id**. 
 
-    <img src="img/select-line-chart-work-id.png" width="400">
+    ![](img/select-line-chart-work-id.png)
 
 	This will change your chart to a single dot.  
   
 2.	Click the context menu icon next to the **Work Item Id** field and change it from **Count** to **Count (Distinct)**.
 
-    <img src="img/choose-count-distinct.png" width="400">
+    ![](img/choose-count-distinct.png)
 
 3. Next, (1) select the **Date** field in the fields list as your axis. To see a daily trend, (2) click the context menu icon next to the field and change it from **Date Hierarchy** to **Date**.
 
-    <img src="img/select-date.png" width="400">
+    ![](img/select-date.png)
 
    To view trends over time, you want to use **Date** and not **Date Hierarchy**. The **Date Hierarchy** in Power BI rolls ups everything into a simple number for the period. The day level in the hierarchy rolls all days to a number between 1-31. For example, April 3 and May 3 both roll up into number 3. This is not the same as counting items per actual date.
 
@@ -554,13 +550,13 @@ Choose **Continue** to move to the next tab.
 
 1. To group your bugs by `Priority`, search for the field in the list (a). Drag the Priority field into the `Legend` of your trend chart (b)
     
-    <img src="img/filter-priority-legend.png" width="400">
+    ![](img/filter-priority-legend.png)
 
 2. The chart now shows a daily distinct count of bugs, grouped by Priority.
 
 3. To just show only Priority 0 and 1 bugs, click the context menu icon next to the **Priority** field to set the filters.  
 
-    <img src="img/filter-priority-1-and-2.png" width="400">   
+    ![](img/filter-priority-1-and-2.png)   
    
 	The trend chart is now grouped and filtered by high priority bugs.
 
@@ -572,15 +568,15 @@ Choose **Continue** to move to the next tab.
 
 	The card now shows the number of active bugs times the number of days they existed within the selected time period.  For this example, that number is 1066. 
 
-    <img src="img/card-active-bugs.png" width="400">   
+    ![](img/card-active-bugs.png)   
     
 3. To get the latest count, add **Is Current** as a page level filter, and select the True checkbox. The **Is Current** field is added automatically to all datasets, marking the rows that contain the latest revision of the work items.
 
-    <img src="img/iscurrent.png" width="400">   
+    ![](img/iscurrent.png)   
    
 	The value on this card should match the count on the last day of the trend chart, which you can obtain by returning to Page 1 and hovering over the last day as shown.  
 
-    <img src="img/check-of-is-current.png" width="400">
+    ![](img/check-of-is-current.png)
 
 ## Save your report, optionally share with others 
 
@@ -588,7 +584,7 @@ Choose **Continue** to move to the next tab.
 
 2. To publish your report to Power BI, choose the **Publish** tab.
 
-    <img src="img/publish-powerbi.png" width="400">
+    ![](img/publish-powerbi.png)
 
 ## Continue to explore your data
 
