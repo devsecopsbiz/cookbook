@@ -31,7 +31,7 @@ Before we get started we need to ensure some prerequisites required for the lab.
 <a name="AzDevOps"></a>
 # Lab: Create Azure DevOps Project 
 
-This workshop will guide you through the initial setup of an Azure DevOps Project, providing a quicker, prebuilt setup ([option 1](#Option#1:-Azure-DevOps-Labs-++)), and a step by step setup ([option 2](#Option-#2:-Azure-DevOps-from-scratch)).
+This workshop will guide you through the initial setup of an Azure DevOps Project, providing a quicker, prebuilt setup.
 
 ## Setup Azure DevOps Project
 
