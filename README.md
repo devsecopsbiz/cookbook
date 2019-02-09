@@ -40,6 +40,8 @@ This workshop will guide you through the initial setup of an Azure DevOps Projec
 * Start by creating a new Project using a preselected [Lab](https://azuredevopsdemogenerator.azurewebsites.net/?name=WhiteSource-Bolt&templateid=77362)
     1. Navigate to the Azure DevOps Demo Generator and *Sign In* with the credentials you've used to create the Azure DevOps Organization:
     
+        !IMAGE[](img/AzureDevOpsLab-SignIn.png)
+
         <img src="img/AzureDevOpsLab-SignIn.png" width="800" />
 
     2. Select your Organization from the dropdown, fill in the Project Name, and *Create Project*:
