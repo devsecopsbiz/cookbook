@@ -24,7 +24,7 @@ Before we get started we need to ensure some prerequisites required for the lab.
 * And to wrap up, let's [gather Business information](#Business)
 
 
-> Optional: Connect Azure DevOps to Power BI by [creating an active bugs report in Power BI based on a custom Analytics view](#PBI)
+> Optional: Connect Azure DevOps to Power BI by [creating an approved bugs report in Power BI based on a custom Analytics view](#PBI)
 
 *********
 
@@ -133,7 +133,7 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
     
     Now we'll be using an alternative way to setup our CI build, leveraging a YAML file.
 
-    6. Navigate to the `owasp-zap-vsts` repo, and drag and drop the `azure-pipelines.yml` file, located on the Lab contents you've downloaded, under *~/files/OWASP*
+    6. Navigate to the `owasp-zap-vsts-extension` repo, and drag and drop the `azure-pipelines.yml` file, located on the Lab contents you've downloaded, under *~/files/OWASP*
 
 
 ## Create Release Pipeline
@@ -429,7 +429,7 @@ This workshop will guide you through the process of creating and configuring a s
 <a name="PBI"></a>
 # Lab: Connect Azure DevOps to Power BI
 
-In this lab, we'll show you how to create a custom Analytics view for active bugs and then generate a Power BI report based on that view. You'll learn how to filter the Analytics view, create a trend chart, as well as a card showing the current count of active bugs. 
+In this lab, we'll show you how to create a custom Analytics view for active bugs and then generate a Power BI report based on that view. You'll learn how to filter the Analytics view, create a trend chart, as well as a card showing the current count of approved bugs. 
 
  Using Power BI connected to Analytics views, you can create reports on your work items. Reports can show your current work data and also historical revisions of the work items.  
 
@@ -453,7 +453,7 @@ In order to create a Power BI report that references an Analytics view, you must
 - Have tracked bugs for some period of time on which to generate a trend report. 
 
 
-## Create a view to only include Active bugs
+## Create a view to only include Approved bugs
 
 <img src="img/open-analytics-views-vert.png" width="400">
 
@@ -465,7 +465,7 @@ Choose **Continue** to move to the next tab in the panel. If you need to revisit
 
 ### 1. Name your view and set to Private  
 
-1. Give your view a name, such as Active bugs. Select **Private view** to save it under **My Views**. Otherwise, you can select **Shared view** to save it under **Shared Views**.  
+1. Give your view a name, such as *Approved bugs*. Select **Private view** to save it under **My Views**. Otherwise, you can select **Shared view** to save it under **Shared Views**.  
 
     <img src="img/active-bugs-general.png" width="400">
 
@@ -473,7 +473,7 @@ Choose **Continue** to move to the next tab.
 
 2. From the **Work items** tab, select the Project and Team that contain the data you want to report on.  
  
-    Here we choose the FabrikamFiber project and the Fiber Suite App team.
+    Here we choose the *MsReadyLab* project and the *MsReadyLab Team*.
     
     <img src="img/active-bugs-team.png" width="400">
 
@@ -496,7 +496,7 @@ Choose **Continue** to move to the next tab.
 
 	Choose **Continue** to move to the next tab. 
 
-6. In the **History** tab, select **Rolling period in days** and enter **60** days. Keep the **Granularity** set to **Daily**. These selections will generate 60 snapshot rows of data for each active bug. Each day will include all the details of that work item as it was at the end of that day. 
+6. In the **History** tab, select **Rolling period in days** and enter **60** days. Keep the **Granularity** set to **Daily**. These selections will generate 60 snapshot rows of data for each approved bug. Each day will include all the details of that work item as it was at the end of that day. 
     
     <img src="img/active-bugs-history.png" width="400">
 
@@ -526,7 +526,7 @@ Choose **Continue** to move to the next tab.
 
     <img src="img/specify-account.png" width="400"> 
 
-4. Expand the **Private Views** folder, choose the **Active Bugs** view you saved in the previous section, and then click **Load**. 
+4. Expand the **Private Views** folder, choose the **Approved Bugs** view you saved in the previous section, and then click **Load**. 
 
     <img src="img/choose-view.png" width="400">
 
