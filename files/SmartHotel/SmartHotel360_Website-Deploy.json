@@ -1,1 +1,424 @@
-{"source":2,"revision":1,"description":null,"createdBy":{"displayName":"Rodrigo Antunes","url":"https://app.vssps.visualstudio.com/A54ce9761-51bb-4a26-a4f5-1c19a57402b8/_apis/Identities/0dbf009e-02df-4433-97f7-dafbf974ddd1","_links":{"avatar":{"href":"https://dev.azure.com/MrRodant/_apis/GraphProfile/MemberAvatars/aad.ZTQ0ZmUyMTMtY2I0ZS03ZWY1LWIzNGItZTMxNTJlMGNiYWVm"}},"id":"0dbf009e-02df-4433-97f7-dafbf974ddd1","uniqueName":"rodant@microsoft.com","imageUrl":"https://dev.azure.com/MrRodant/_api/_common/identityImage?id=0dbf009e-02df-4433-97f7-dafbf974ddd1","descriptor":"aad.ZTQ0ZmUyMTMtY2I0ZS03ZWY1LWIzNGItZTMxNTJlMGNiYWVm"},"createdOn":"2019-01-17T18:51:01.823Z","modifiedBy":{"displayName":"Rodrigo Antunes","url":"https://app.vssps.visualstudio.com/A54ce9761-51bb-4a26-a4f5-1c19a57402b8/_apis/Identities/0dbf009e-02df-4433-97f7-dafbf974ddd1","_links":{"avatar":{"href":"https://dev.azure.com/MrRodant/_apis/GraphProfile/MemberAvatars/aad.ZTQ0ZmUyMTMtY2I0ZS03ZWY1LWIzNGItZTMxNTJlMGNiYWVm"}},"id":"0dbf009e-02df-4433-97f7-dafbf974ddd1","uniqueName":"rodant@microsoft.com","imageUrl":"https://dev.azure.com/MrRodant/_api/_common/identityImage?id=0dbf009e-02df-4433-97f7-dafbf974ddd1","descriptor":"aad.ZTQ0ZmUyMTMtY2I0ZS03ZWY1LWIzNGItZTMxNTJlMGNiYWVm"},"modifiedOn":"2019-01-17T18:51:01.823Z","isDeleted":false,"variables":{"location":{"value":"East US"},"ResourceGroup":{"value":"Website"}},"variableGroups":[],"environments":[{"id":1,"name":"Stage 1","rank":1,"owner":{"displayName":"Rodrigo Antunes","url":"https://app.vssps.visualstudio.com/A54ce9761-51bb-4a26-a4f5-1c19a57402b8/_apis/Identities/0dbf009e-02df-4433-97f7-dafbf974ddd1","_links":{"avatar":{"href":"https://dev.azure.com/MrRodant/_apis/GraphProfile/MemberAvatars/aad.ZTQ0ZmUyMTMtY2I0ZS03ZWY1LWIzNGItZTMxNTJlMGNiYWVm"}},"id":"0dbf009e-02df-4433-97f7-dafbf974ddd1","uniqueName":"rodant@microsoft.com","imageUrl":"https://dev.azure.com/MrRodant/_api/_common/identityImage?id=0dbf009e-02df-4433-97f7-dafbf974ddd1","descriptor":"aad.ZTQ0ZmUyMTMtY2I0ZS03ZWY1LWIzNGItZTMxNTJlMGNiYWVm"},"variables":{},"variableGroups":[],"preDeployApprovals":{"approvals":[{"rank":1,"isAutomated":true,"isNotificationOn":false,"id":1}],"approvalOptions":{"requiredApproverCount":null,"releaseCreatorCanBeApprover":false,"autoTriggeredAndPreviousEnvironmentApprovedCanBeSkipped":false,"enforceIdentityRevalidation":false,"timeoutInMinutes":0,"executionOrder":1}},"deployStep":{"id":2},"postDeployApprovals":{"approvals":[{"rank":1,"isAutomated":true,"isNotificationOn":false,"id":3}],"approvalOptions":{"requiredApproverCount":null,"releaseCreatorCanBeApprover":false,"autoTriggeredAndPreviousEnvironmentApprovedCanBeSkipped":false,"enforceIdentityRevalidation":false,"timeoutInMinutes":0,"executionOrder":2}},"deployPhases":[{"deploymentInput":{"parallelExecution":{"parallelExecutionType":0},"skipArtifactsDownload":false,"artifactsDownloadInput":{"downloadInputs":[]},"queueId":81,"demands":[],"enableAccessToken":false,"timeoutInMinutes":0,"jobCancelTimeoutInMinutes":1,"condition":"succeeded()","overrideInputs":{}},"rank":1,"phaseType":1,"name":"Agent job","refName":null,"workflowTasks":[{"environment":{},"taskId":"94a74903-f93f-4075-884f-dc11f34058b4","version":"2.*","name":"Deploying Resources","refName":"","enabled":true,"alwaysRun":false,"continueOnError":false,"timeoutInMinutes":0,"definitionType":"task","overrideInputs":{},"condition":"succeeded()","inputs":{"ConnectedServiceName":"","action":"Create Or Update Resource Group","resourceGroupName":"$(ResourceGroup)","location":"$(location)","templateLocation":"Linked artifact","csmFileLink":"","csmParametersFileLink":"","csmFile":"$(System.DefaultWorkingDirectory)/SmartHotel Petchecker Web/arm/smarthote360.website.deployment.json","csmParametersFile":"","overrideParameters":"","deploymentMode":"Incremental","enableDeploymentPrerequisites":"None","deploymentGroupEndpoint":"","project":"","deploymentGroupName":"","copyAzureVMTags":"true","runAgentServiceAsUser":"false","userName":"","password":"","outputVariable":"","deploymentOutputs":""}},{"environment":{},"taskId":"584bcff2-3353-4f11-872b-6ba01267a972","version":"4.*","name":"ARM Outputs","refName":"","enabled":true,"alwaysRun":false,"continueOnError":false,"timeoutInMinutes":0,"definitionType":"task","overrideInputs":{},"condition":"succeeded()","inputs":{"ConnectedServiceNameSelector":"","ConnectedServiceNameARM":"","resourceGroupName":"$(ResourceGroup)","prefix":"","outputNames":"","whenLastDeploymentIsFailed":"fail","deploymentNameFilter":""}},{"environment":{},"taskId":"497d490f-eea7-4f2b-ab94-48d9c1acdcb1","version":"3.*","name":"Deploy Azure Function","refName":"","enabled":true,"alwaysRun":false,"continueOnError":false,"timeoutInMinutes":0,"definitionType":null,"overrideInputs":{},"condition":"succeeded()","inputs":{"ConnectedServiceName":"","WebAppKind":"functionapp","WebAppName":"$(function)","DeployToSlotFlag":"false","ResourceGroupName":"","SlotName":"","ImageSource":"Registry","AzureContainerRegistry":"","AzureContainerRegistryLoginServer":"","AzureContainerRegistryImage":"","AzureContainerRegistryTag":"","DockerRepositoryAccess":"public","RegistryConnectedServiceName":"","PrivateRegistryImage":"","PrivateRegistryTag":"","DockerNamespace":"","DockerRepository":"","DockerImageTag":"$(Build.BuildId)","VirtualApplication":"","Package":"$(System.DefaultWorkingDirectory)/SmartHotel Petchecker Web/Function-app/SmartHotel360.WebsiteFunction.zip","BuiltinLinuxPackage":"$(System.DefaultWorkingDirectory)/**/*.zip","RuntimeStack":"","StartupCommand":"","WebAppUri":"","ScriptType":"","InlineScript":"","ScriptPath":"","GenerateWebConfig":"false","WebConfigParameters":"","AppSettings":"","ConfigurationSettings":"","TakeAppOfflineFlag":"true","UseWebDeploy":"false","SetParametersFile":"","RemoveAdditionalFilesFlag":"false","ExcludeFilesFromAppDataFlag":"false","AdditionalArguments":"","RenameFilesFlag":"true","XmlTransformation":"false","XmlVariableSubstitution":"false","JSONFiles":""}},{"environment":{},"taskId":"497d490f-eea7-4f2b-ab94-48d9c1acdcb1","version":"3.*","name":"Deploy SmartHotel Website","refName":"","enabled":true,"alwaysRun":false,"continueOnError":false,"timeoutInMinutes":0,"definitionType":"task","overrideInputs":{},"condition":"succeeded()","inputs":{"ConnectedServiceName":"","WebAppKind":"webApp","WebAppName":"$(web)","DeployToSlotFlag":"false","ResourceGroupName":"","SlotName":"production","ImageSource":"Registry","AzureContainerRegistry":"","AzureContainerRegistryLoginServer":"","AzureContainerRegistryImage":"","AzureContainerRegistryTag":"","DockerRepositoryAccess":"public","RegistryConnectedServiceName":"","PrivateRegistryImage":"","PrivateRegistryTag":"","DockerNamespace":"","DockerRepository":"","DockerImageTag":"","VirtualApplication":"","Package":"$(System.DefaultWorkingDirectory)/SmartHotel Petchecker Web/web/SmartHotel360.Website.zip","BuiltinLinuxPackage":"$(System.DefaultWorkingDirectory)/**/*.zip","RuntimeStack":"","StartupCommand":"","WebAppUri":"","ScriptType":"","InlineScript":":: You can provide your deployment commands here. One command per line.","ScriptPath":"","GenerateWebConfig":"false","WebConfigParameters":"","AppSettings":"","ConfigurationSettings":"","TakeAppOfflineFlag":"true","UseWebDeploy":"true","SetParametersFile":"","RemoveAdditionalFilesFlag":"true","ExcludeFilesFromAppDataFlag":"false","AdditionalArguments":"","RenameFilesFlag":"false","XmlTransformation":"false","XmlVariableSubstitution":"false","JSONFiles":""}}]}],"environmentOptions":{"emailNotificationType":"OnlyOnFailure","emailRecipients":"release.environment.owner;release.creator","skipArtifactsDownload":false,"timeoutInMinutes":0,"enableAccessToken":false,"publishDeploymentStatus":true,"badgeEnabled":false,"autoLinkWorkItems":false,"pullRequestDeploymentEnabled":false},"demands":[],"conditions":[{"name":"ReleaseStarted","conditionType":1,"value":""}],"executionPolicy":{"concurrencyCount":1,"queueDepthCount":0},"schedules":[],"currentRelease":{"id":0,"url":"https://vsrm.dev.azure.com/MrRodant/da3b9838-c03c-4c89-9409-06944e75e479/_apis/Release/releases/0","_links":{}},"retentionPolicy":{"daysToKeep":30,"releasesToKeep":3,"retainBuild":true},"processParameters":{},"properties":{},"preDeploymentGates":{"id":0,"gatesOptions":null,"gates":[]},"postDeploymentGates":{"id":0,"gatesOptions":null,"gates":[]},"environmentTriggers":[],"badgeUrl":"https://vsrm.dev.azure.com/MrRodant/_apis/public/Release/badge/da3b9838-c03c-4c89-9409-06944e75e479/1/1"}],"artifacts":[{"sourceId":"da3b9838-c03c-4c89-9409-06944e75e479:9","type":"Build","alias":"SmartHotel Petchecker Web","definitionReference":{"defaultVersionBranch":{"id":"","name":""},"defaultVersionSpecific":{"id":"","name":""},"defaultVersionTags":{"id":"","name":""},"defaultVersionType":{"id":"selectDuringReleaseCreationType","name":"Specify at the time of release creation"},"definition":{"id":"9","name":"SmartHotel_Petchecker-Web"},"definitions":{"id":"","name":""},"IsMultiDefinitionType":{"id":"False","name":"False"},"project":{"id":"da3b9838-c03c-4c89-9409-06944e75e479","name":"MsReadySmartHotel360"},"artifactSourceDefinitionUrl":{"id":"https://dev.azure.com/MrRodant/_permalink/_build/index?collectionId=4d15b290-cbe9-407c-ac43-feef6517553a&projectId=da3b9838-c03c-4c89-9409-06944e75e479&definitionId=9","name":""}},"isPrimary":true,"isRetained":false}],"triggers":[],"releaseNameFormat":"Release-$(rev:r)","tags":[],"pipelineProcess":{"type":1},"properties":{"DefinitionCreationSource":{"$type":"System.String","$value":"Other"}},"id":1,"name":"SmartHotel360_Website-Deploy","path":"\\","projectReference":null,"url":"https://vsrm.dev.azure.com/MrRodant/da3b9838-c03c-4c89-9409-06944e75e479/_apis/Release/definitions/1","_links":{"self":{"href":"https://vsrm.dev.azure.com/MrRodant/da3b9838-c03c-4c89-9409-06944e75e479/_apis/Release/definitions/1"},"web":{"href":"https://dev.azure.com/MrRodant/da3b9838-c03c-4c89-9409-06944e75e479/_release?definitionId=1"}}}
+{
+	"source": 2,
+	"revision": 1,
+	"description": null,
+	"createdBy": {
+		"displayName": "Rodrigo Antunes",
+		"url": "https://app.vssps.visualstudio.com/A54ce9761-51bb-4a26-a4f5-1c19a57402b8/_apis/Identities/0dbf009e-02df-4433-97f7-dafbf974ddd1",
+		"_links": {
+			"avatar": {
+				"href": "https://dev.azure.com/MrRodant/_apis/GraphProfile/MemberAvatars/aad.ZTQ0ZmUyMTMtY2I0ZS03ZWY1LWIzNGItZTMxNTJlMGNiYWVm"
+			}
+		},
+		"id": "0dbf009e-02df-4433-97f7-dafbf974ddd1",
+		"uniqueName": "rodant@microsoft.com",
+		"imageUrl": "https://dev.azure.com/MrRodant/_api/_common/identityImage?id=0dbf009e-02df-4433-97f7-dafbf974ddd1",
+		"descriptor": "aad.ZTQ0ZmUyMTMtY2I0ZS03ZWY1LWIzNGItZTMxNTJlMGNiYWVm"
+	},
+	"createdOn": "2019-01-17T18:51:01.823Z",
+	"modifiedBy": {
+		"displayName": "Rodrigo Antunes",
+		"url": "https://app.vssps.visualstudio.com/A54ce9761-51bb-4a26-a4f5-1c19a57402b8/_apis/Identities/0dbf009e-02df-4433-97f7-dafbf974ddd1",
+		"_links": {
+			"avatar": {
+				"href": "https://dev.azure.com/MrRodant/_apis/GraphProfile/MemberAvatars/aad.ZTQ0ZmUyMTMtY2I0ZS03ZWY1LWIzNGItZTMxNTJlMGNiYWVm"
+			}
+		},
+		"id": "0dbf009e-02df-4433-97f7-dafbf974ddd1",
+		"uniqueName": "rodant@microsoft.com",
+		"imageUrl": "https://dev.azure.com/MrRodant/_api/_common/identityImage?id=0dbf009e-02df-4433-97f7-dafbf974ddd1",
+		"descriptor": "aad.ZTQ0ZmUyMTMtY2I0ZS03ZWY1LWIzNGItZTMxNTJlMGNiYWVm"
+	},
+	"modifiedOn": "2019-01-17T18:51:01.823Z",
+	"isDeleted": false,
+	"variables": {
+		"location": {
+			"value": "East US"
+		},
+		"ResourceGroup": {
+			"value": "Website"
+		}
+	},
+	"variableGroups": [],
+	"environments": [
+		{
+			"id": 1,
+			"name": "Stage 1",
+			"rank": 1,
+			"owner": {
+				"displayName": "Rodrigo Antunes",
+				"url": "https://app.vssps.visualstudio.com/A54ce9761-51bb-4a26-a4f5-1c19a57402b8/_apis/Identities/0dbf009e-02df-4433-97f7-dafbf974ddd1",
+				"_links": {
+					"avatar": {
+						"href": "https://dev.azure.com/MrRodant/_apis/GraphProfile/MemberAvatars/aad.ZTQ0ZmUyMTMtY2I0ZS03ZWY1LWIzNGItZTMxNTJlMGNiYWVm"
+					}
+				},
+				"id": "0dbf009e-02df-4433-97f7-dafbf974ddd1",
+				"uniqueName": "rodant@microsoft.com",
+				"imageUrl": "https://dev.azure.com/MrRodant/_api/_common/identityImage?id=0dbf009e-02df-4433-97f7-dafbf974ddd1",
+				"descriptor": "aad.ZTQ0ZmUyMTMtY2I0ZS03ZWY1LWIzNGItZTMxNTJlMGNiYWVm"
+			},
+			"variables": {},
+			"variableGroups": [],
+			"preDeployApprovals": {
+				"approvals": [
+					{
+						"rank": 1,
+						"isAutomated": true,
+						"isNotificationOn": false,
+						"id": 1
+					}
+				],
+				"approvalOptions": {
+					"requiredApproverCount": null,
+					"releaseCreatorCanBeApprover": false,
+					"autoTriggeredAndPreviousEnvironmentApprovedCanBeSkipped": false,
+					"enforceIdentityRevalidation": false,
+					"timeoutInMinutes": 0,
+					"executionOrder": 1
+				}
+			},
+			"deployStep": {
+				"id": 2
+			},
+			"postDeployApprovals": {
+				"approvals": [
+					{
+						"rank": 1,
+						"isAutomated": true,
+						"isNotificationOn": false,
+						"id": 3
+					}
+				],
+				"approvalOptions": {
+					"requiredApproverCount": null,
+					"releaseCreatorCanBeApprover": false,
+					"autoTriggeredAndPreviousEnvironmentApprovedCanBeSkipped": false,
+					"enforceIdentityRevalidation": false,
+					"timeoutInMinutes": 0,
+					"executionOrder": 2
+				}
+			},
+			"deployPhases": [
+				{
+					"deploymentInput": {
+						"parallelExecution": {
+							"parallelExecutionType": 0
+						},
+						"skipArtifactsDownload": false,
+						"artifactsDownloadInput": {
+							"downloadInputs": []
+						},
+						"queueId": 81,
+						"demands": [],
+						"enableAccessToken": false,
+						"timeoutInMinutes": 0,
+						"jobCancelTimeoutInMinutes": 1,
+						"condition": "succeeded()",
+						"overrideInputs": {}
+					},
+					"rank": 1,
+					"phaseType": 1,
+					"name": "Agent job",
+					"refName": null,
+					"workflowTasks": [
+						{
+							"environment": {},
+							"taskId": "94a74903-f93f-4075-884f-dc11f34058b4",
+							"version": "2.*",
+							"name": "Deploying Resources",
+							"refName": "",
+							"enabled": true,
+							"alwaysRun": false,
+							"continueOnError": false,
+							"timeoutInMinutes": 0,
+							"definitionType": "task",
+							"overrideInputs": {},
+							"condition": "succeeded()",
+							"inputs": {
+								"ConnectedServiceName": "",
+								"action": "Create Or Update Resource Group",
+								"resourceGroupName": "$(ResourceGroup)",
+								"location": "$(location)",
+								"templateLocation": "Linked artifact",
+								"csmFileLink": "",
+								"csmParametersFileLink": "",
+								"csmFile": "$(System.DefaultWorkingDirectory)/SmartHotel Petchecker Web/arm/smarthote360.website.deployment.json",
+								"csmParametersFile": "",
+								"overrideParameters": "",
+								"deploymentMode": "Incremental",
+								"enableDeploymentPrerequisites": "None",
+								"deploymentGroupEndpoint": "",
+								"project": "",
+								"deploymentGroupName": "",
+								"copyAzureVMTags": "true",
+								"runAgentServiceAsUser": "false",
+								"userName": "",
+								"password": "",
+								"outputVariable": "",
+								"deploymentOutputs": ""
+							}
+						},
+						{
+							"environment": {},
+							"taskId": "584bcff2-3353-4f11-872b-6ba01267a972",
+							"version": "4.*",
+							"name": "ARM Outputs",
+							"refName": "",
+							"enabled": true,
+							"alwaysRun": false,
+							"continueOnError": false,
+							"timeoutInMinutes": 0,
+							"definitionType": "task",
+							"overrideInputs": {},
+							"condition": "succeeded()",
+							"inputs": {
+								"ConnectedServiceNameSelector": "",
+								"ConnectedServiceNameARM": "",
+								"resourceGroupName": "$(ResourceGroup)",
+								"prefix": "",
+								"outputNames": "",
+								"whenLastDeploymentIsFailed": "fail",
+								"deploymentNameFilter": ""
+							}
+						},
+						{
+							"environment": {},
+							"taskId": "497d490f-eea7-4f2b-ab94-48d9c1acdcb1",
+							"version": "3.*",
+							"name": "Deploy Azure Function",
+							"refName": "",
+							"enabled": true,
+							"alwaysRun": false,
+							"continueOnError": false,
+							"timeoutInMinutes": 0,
+							"definitionType": null,
+							"overrideInputs": {},
+							"condition": "succeeded()",
+							"inputs": {
+								"ConnectedServiceName": "",
+								"WebAppKind": "functionapp",
+								"WebAppName": "$(function)",
+								"DeployToSlotFlag": "false",
+								"ResourceGroupName": "",
+								"SlotName": "",
+								"ImageSource": "Registry",
+								"AzureContainerRegistry": "",
+								"AzureContainerRegistryLoginServer": "",
+								"AzureContainerRegistryImage": "",
+								"AzureContainerRegistryTag": "",
+								"DockerRepositoryAccess": "public",
+								"RegistryConnectedServiceName": "",
+								"PrivateRegistryImage": "",
+								"PrivateRegistryTag": "",
+								"DockerNamespace": "",
+								"DockerRepository": "",
+								"DockerImageTag": "$(Build.BuildId)",
+								"VirtualApplication": "",
+								"Package": "$(System.DefaultWorkingDirectory)/SmartHotel Petchecker Web/Function-app/SmartHotel360.WebsiteFunction.zip",
+								"BuiltinLinuxPackage": "$(System.DefaultWorkingDirectory)/**/*.zip",
+								"RuntimeStack": "",
+								"StartupCommand": "",
+								"WebAppUri": "",
+								"ScriptType": "",
+								"InlineScript": "",
+								"ScriptPath": "",
+								"GenerateWebConfig": "false",
+								"WebConfigParameters": "",
+								"AppSettings": "",
+								"ConfigurationSettings": "",
+								"TakeAppOfflineFlag": "true",
+								"UseWebDeploy": "false",
+								"SetParametersFile": "",
+								"RemoveAdditionalFilesFlag": "false",
+								"ExcludeFilesFromAppDataFlag": "false",
+								"AdditionalArguments": "",
+								"RenameFilesFlag": "true",
+								"XmlTransformation": "false",
+								"XmlVariableSubstitution": "false",
+								"JSONFiles": ""
+							}
+						},
+						{
+							"environment": {},
+							"taskId": "497d490f-eea7-4f2b-ab94-48d9c1acdcb1",
+							"version": "3.*",
+							"name": "Deploy SmartHotel Website",
+							"refName": "",
+							"enabled": true,
+							"alwaysRun": false,
+							"continueOnError": false,
+							"timeoutInMinutes": 0,
+							"definitionType": "task",
+							"overrideInputs": {},
+							"condition": "succeeded()",
+							"inputs": {
+								"ConnectedServiceName": "",
+								"WebAppKind": "webApp",
+								"WebAppName": "$(web)",
+								"DeployToSlotFlag": "false",
+								"ResourceGroupName": "",
+								"SlotName": "production",
+								"ImageSource": "Registry",
+								"AzureContainerRegistry": "",
+								"AzureContainerRegistryLoginServer": "",
+								"AzureContainerRegistryImage": "",
+								"AzureContainerRegistryTag": "",
+								"DockerRepositoryAccess": "public",
+								"RegistryConnectedServiceName": "",
+								"PrivateRegistryImage": "",
+								"PrivateRegistryTag": "",
+								"DockerNamespace": "",
+								"DockerRepository": "",
+								"DockerImageTag": "",
+								"VirtualApplication": "",
+								"Package": "$(System.DefaultWorkingDirectory)/SmartHotel Petchecker Web/web/SmartHotel360.Website.zip",
+								"BuiltinLinuxPackage": "$(System.DefaultWorkingDirectory)/**/*.zip",
+								"RuntimeStack": "",
+								"StartupCommand": "",
+								"WebAppUri": "SmartHotelWebsiteURL",
+								"ScriptType": "",
+								"InlineScript": ":: You can provide your deployment commands here. One command per line.",
+								"ScriptPath": "",
+								"GenerateWebConfig": "false",
+								"WebConfigParameters": "",
+								"AppSettings": "",
+								"ConfigurationSettings": "",
+								"TakeAppOfflineFlag": "true",
+								"UseWebDeploy": "true",
+								"SetParametersFile": "",
+								"RemoveAdditionalFilesFlag": "true",
+								"ExcludeFilesFromAppDataFlag": "false",
+								"AdditionalArguments": "",
+								"RenameFilesFlag": "false",
+								"XmlTransformation": "false",
+								"XmlVariableSubstitution": "false",
+								"JSONFiles": ""
+							}
+						}
+					]
+				}
+			],
+			"environmentOptions": {
+				"emailNotificationType": "OnlyOnFailure",
+				"emailRecipients": "release.environment.owner;release.creator",
+				"skipArtifactsDownload": false,
+				"timeoutInMinutes": 0,
+				"enableAccessToken": false,
+				"publishDeploymentStatus": true,
+				"badgeEnabled": false,
+				"autoLinkWorkItems": false,
+				"pullRequestDeploymentEnabled": false
+			},
+			"demands": [],
+			"conditions": [
+				{
+					"name": "ReleaseStarted",
+					"conditionType": 1,
+					"value": ""
+				}
+			],
+			"executionPolicy": {
+				"concurrencyCount": 1,
+				"queueDepthCount": 0
+			},
+			"schedules": [],
+			"currentRelease": {
+				"id": 0,
+				"url": "https://vsrm.dev.azure.com/MrRodant/da3b9838-c03c-4c89-9409-06944e75e479/_apis/Release/releases/0",
+				"_links": {}
+			},
+			"retentionPolicy": {
+				"daysToKeep": 30,
+				"releasesToKeep": 3,
+				"retainBuild": true
+			},
+			"processParameters": {},
+			"properties": {},
+			"preDeploymentGates": {
+				"id": 0,
+				"gatesOptions": null,
+				"gates": []
+			},
+			"postDeploymentGates": {
+				"id": 0,
+				"gatesOptions": null,
+				"gates": []
+			},
+			"environmentTriggers": [],
+			"badgeUrl": "https://vsrm.dev.azure.com/MrRodant/_apis/public/Release/badge/da3b9838-c03c-4c89-9409-06944e75e479/1/1"
+		}
+	],
+	"artifacts": [
+		{
+			"sourceId": "da3b9838-c03c-4c89-9409-06944e75e479:9",
+			"type": "Build",
+			"alias": "SmartHotel Petchecker Web",
+			"definitionReference": {
+				"defaultVersionBranch": {
+					"id": "",
+					"name": ""
+				},
+				"defaultVersionSpecific": {
+					"id": "",
+					"name": ""
+				},
+				"defaultVersionTags": {
+					"id": "",
+					"name": ""
+				},
+				"defaultVersionType": {
+					"id": "selectDuringReleaseCreationType",
+					"name": "Specify at the time of release creation"
+				},
+				"definition": {
+					"id": "9",
+					"name": "SmartHotel_Petchecker-Web"
+				},
+				"definitions": {
+					"id": "",
+					"name": ""
+				},
+				"IsMultiDefinitionType": {
+					"id": "False",
+					"name": "False"
+				},
+				"project": {
+					"id": "da3b9838-c03c-4c89-9409-06944e75e479",
+					"name": "MsReadySmartHotel360"
+				},
+				"artifactSourceDefinitionUrl": {
+					"id": "https://dev.azure.com/MrRodant/_permalink/_build/index?collectionId=4d15b290-cbe9-407c-ac43-feef6517553a&projectId=da3b9838-c03c-4c89-9409-06944e75e479&definitionId=9",
+					"name": ""
+				}
+			},
+			"isPrimary": true,
+			"isRetained": false
+		}
+	],
+	"triggers": [],
+	"releaseNameFormat": "Release-$(rev:r)",
+	"tags": [],
+	"pipelineProcess": {
+		"type": 1
+	},
+	"properties": {
+		"DefinitionCreationSource": {
+			"$type": "System.String",
+			"$value": "Other"
+		}
+	},
+	"id": 1,
+	"name": "SmartHotel360_Website-Deploy",
+	"path": "\\",
+	"projectReference": null,
+	"url": "https://vsrm.dev.azure.com/MrRodant/da3b9838-c03c-4c89-9409-06944e75e479/_apis/Release/definitions/1",
+	"_links": {
+		"self": {
+			"href": "https://vsrm.dev.azure.com/MrRodant/da3b9838-c03c-4c89-9409-06944e75e479/_apis/Release/definitions/1"
+		},
+		"web": {
+			"href": "https://dev.azure.com/MrRodant/da3b9838-c03c-4c89-9409-06944e75e479/_release?definitionId=1"
+		}
+	}
+}

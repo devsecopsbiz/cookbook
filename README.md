@@ -462,7 +462,7 @@ Start by adding two `SSH` tasks, one for running the tests and another for publi
     Change the URI with the value of your own website, published on the previous Labs, and copy the updated command:
 
     ```bash
-    docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-weekly zap-baseline.py -t https://smarthotel360lcu4bmxi7kl4w.azurewebsites.net -g gen.conf -r OwaspZapReport.html 
+    docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-weekly zap-baseline.py -t $(SmartHotelWebsiteURL) -g gen.conf -r $(Release.DefinitionName)_$(Release.ReleaseName)_OwaspZapReport.html
     ```
 
     4.2. Before going further we need to configure the SSH service connection to the provisioned Docker machine.
@@ -484,10 +484,10 @@ Start by adding two `SSH` tasks, one for running the tests and another for publi
 
     4.4. Next we'll be adding a *Powershell* task to download the generated test report and pass into the release pipeline.
 
-    Add the following command to download the file, changing the *URI* parameter as before.
+    Add the following command to download the file, changing the *URI* on both commands.
 
     ```bash
-    Invoke-WebRequest -Uri "http://<msreadydockervm>.<eastus>.cloudapp.azure.com/OwaspZapReport.html" -OutFile "$(System.DefaultWorkingDirectory)\OwaspZapReport.html"
+    Invoke-WebRequest -Uri "http://<msreadydockervm>.<eastus>.cloudapp.azure.com/$(Release.DefinitionName)_$(Release.ReleaseName)_OwaspZapReport.html" -OutFile "$(System.DefaultWorkingDirectory)\OwaspZapReport.html"
     ```
 
     ![](img/Powershell-Download.png)
@@ -496,10 +496,12 @@ Start by adding two `SSH` tasks, one for running the tests and another for publi
 
     ![](img/Add-OWASP-tasks-search.png)
 
-5. Paste this command on the *Script* text box as seen in the image.
+5. Paste this command on the *Script* text box as seen in the image, adapting the URI on the Echo command. 
 
     ```bash
     $(System.DefaultWorkingDirectory)/_owasp-zap-vsts-extension/drop/owasp-zap-vsts-tool/bin/Release/owasp-zap-vsts-tool.exe attachreport collectionUri="$(System.TeamFoundationCollectionUri)" teamProjectName="$(System.TeamProject)" releaseUri=$(Release.ReleaseUri) releaseEnvironmentUri=$(Release.EnvironmentUri) filepath=$(System.DefaultWorkingDirectory)\OwaspZapReport.html personalAccessToken=$(PAT)
+
+    echo "http://<msreadydockervm>.<eastus>.cloudapp.azure.com/$(Release.DefinitionName)_$(Release.ReleaseName)_OwaspZapReport.html"
     ```
 
     ![](img/OWASP-Attach-Report.png)
