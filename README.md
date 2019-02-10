@@ -310,9 +310,12 @@ OWASP is a worldwide not-for-profit organization dedicated to helping improve th
     ![](img/AzureCloudShell.png)
 
     Since we're using brand new Subscriptions, we need to create a storage to support Cloud Shell.
-    Just press `Create storage` to proceed.
-
+    
+    Press `Show advanced settings` and fill in `Storage account` and `File share` before hitting the `Create storage` button.
+    
     ![](img/CloudShellStorage.png)
+
+    ![](img/CloudShellStorageAdvanced.png)
 
     After a few seconds you should see something like this:
 
