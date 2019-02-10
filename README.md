@@ -148,7 +148,14 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
     
     Now we'll be using an alternative way to setup our CI build, leveraging a YAML file.
 
-    6. Navigate to the `owasp-zap-vsts-extension` repo, and drag and drop the `azure-pipelines.yml` file, located on the Lab contents you've downloaded, under *~/files/OWASP*
+    Navigate to the `owasp-zap-vsts-extension` repo, and drag and drop the `azure-pipelines.yml` file, located on the Lab contents you've downloaded, under *~/files/OWASP*, into the repository.
+    You should end up with the following contents:
+
+    ![](img/OWASP-pipeline.png)
+
+    This will generate the following build pipeline:
+
+    ![](img/OWASP-build.png)
 
 
 ## Create Release Pipeline
