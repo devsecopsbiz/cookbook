@@ -419,6 +419,22 @@ OWASP is a worldwide not-for-profit organization dedicated to helping improve th
 
     ![](img/PAT-token.png)
 
+    3.5 Add a secret variable in the release for later use.
+    Navigate to *Pipelines*, *Releases* and edit our release pipeline. Then, under *Variables*, add a new variable setting:
+
+    ```bash    
+    Name: PAT
+    Value: <copied PAT token>
+    Secret: press the locked button, hiding the content of the variable (making it a secret)
+    ```
+
+    You should get the following configuration:
+
+    ![](img/PAT-token-variable.png)
+
+    Save the release pipeline.
+
+
 4. Let's get back to the Release pipeline and add some extra tasks to launch the ZAP test and grab the results.
 Start by adding two `SSH` tasks, one for running the tests and another for publishing the test report to a public website. 
 
@@ -471,10 +487,10 @@ Start by adding two `SSH` tasks, one for running the tests and another for publi
 
     ![](img/Add-OWASP-tasks-search.png)
 
-5. Paste this command on the *Script* text box, changing the values between `<>`, as seen in the image.
+5. Paste this command on the *Script* text box as seen in the image.
 
     ```bash
-    $(System.DefaultWorkingDirectory)/owasp-zap-vsts CI/drop/owasp-zap-vsts-tool/bin/Release/owasp-zap-vsts-tool.exe attachreport collectionUri="<Azure DevOps ORGANIZATION URI>" teamProjectName="MsReadyLab" releaseUri=$(Release.ReleaseUri) releaseEnvironmentUri=$(Release.EnvironmentUri) filepath=$(System.DefaultWorkingDirectory)\OwaspZapReport.html personalAccessToken=<GENERATED PERSONAL ACCESS TOKEN>
+    $(System.DefaultWorkingDirectory)/_owasp-zap-vsts-extension/drop/owasp-zap-vsts-tool/bin/Release/owasp-zap-vsts-tool.exe attachreport collectionUri="$(System.TeamFoundationCollectionUri)" teamProjectName="$(System.TeamProject)" releaseUri=$(Release.ReleaseUri) releaseEnvironmentUri=$(Release.EnvironmentUri) filepath=$(System.DefaultWorkingDirectory)\OwaspZapReport.html personalAccessToken=$(PAT)
     ```
 
     ![](img/OWASP-Attach-Report.png)
