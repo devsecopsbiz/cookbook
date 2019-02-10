@@ -547,8 +547,9 @@ You need to create an Azure Pipeline for the widget to work. This pipeline is go
 
     ![](img/CostInsights-Import.png)
 
-
     After importing, configure the missing settings as following:
+
+    ![](img/CostInsights-configuration.png)
 
     **Pipeline**
     ```bash
