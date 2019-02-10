@@ -33,6 +33,21 @@ Before we get started we need to ensure some prerequisites required for the lab.
 
 This workshop will guide you through the initial setup of an Azure DevOps Project, providing a quicker, prebuilt setup.
 
+The first required step is to clone the public GitHub repository where the Lab is hosted.
+This will allow you to have access to several pre-prepared assets, necessary for the different Lab modules we'll be implementing.
+
+Search for *x64_x86 Cross Tools Prompt for VS 2017*, launching it in *Administrator mode*.
+Then execute the following:
+
+```bash
+cd\
+git clone https://github.com/devsecopsbiz/technical-lab.git
+```
+
+And you will get all the content on the *C:\technical-lab* folder, as shown in the image:
+
+![](img/clonerepo.png)
+
 ## Setup Azure DevOps Project
 
 >  Use Azure DevOps Labs to create a preconfigured project and enrich it for a quick start.
@@ -165,13 +180,19 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
 
         ![](img/AzureDevOpsLab-Releases-08.png)
 
-    6. Select the first task and, under *Azure Subscription*, press `New`:
+    6. Select the *Agent job*, and set the *Agent pool* to `Hosted`
+
+        ![](img/ReleasePipeline_SetAgentPool.png)
+
+    7. Select the first task and, under *Azure Subscription*, press `New`:
 
         ![](img/AzureDevOpsLab-Releases-09.png)
 
-    7. This opens a pop up where we'll have to fill in the details of our *Azure Subscription*, where we'll be deploying out solution:
+    8. This opens a pop up where we'll have to fill in the details of our *Azure Subscription*, where we'll be deploying out solution:
 
-    > Step in each one of the tasks with error, selecting and authorizing an Azure Subscription to use in the lab. 
+        Step in each one of the tasks with error, selecting and authorizing an Azure Subscription to use in the lab. 
+
+        > For the *ARM Outputs* task in particular, it's also required to specify the *Azure Connection Type* as `Azure Resource Manager`
 
     9. Remove the existing *Artifact*.
 
@@ -366,47 +387,89 @@ OWASP is a worldwide not-for-profit organization dedicated to helping improve th
 
     ![](img/OWASP-finish.png)
 
-    Now take a quick look at the report html
-
-    ```bash
-    cat testreport.html
-    ```
     
 3. Now let's grab a personal access token (PAT) we'll be needing later on.
     > Save that PAT token, it can't be retrieved later
 
-    2.1 Navigate to the user profile and select *Security*
+    3.1 Navigate to the user profile and select *Security*
 
     ![](img/PAT-token-security.png)
 
-    2.2 Select *Personal access token*
+    3.2 Select *Personal access token*
 
     ![](img/PAT-token-navigate.png)
 
-    2.3 Create a new personal access token
+    3.3 Create a new personal access token
 
     ![](img/PAT-token-create.png)
 
-    2.4 Copy the token, making sure you don't lose it.
+    3.4 Copy the token, making sure you don't lose it.
 
     ![](img/PAT-token.png)
 
-3. Now let's add some `Command Line` tasks to our release pipeline, one for attaching the generated analysis report and another to be able to create bugs if necessary:
+4. Let's get back to the Release pipeline and add some extra tasks to launch the ZAP test and grab the results.
+Start by adding two `SSH` tasks, one for running the tests and another for publishing the test report to a public website. 
 
     ![](img/Add-OWASP-tasks-navigate.png)
+
+    Add a new Artifact, from the *owasp-zap-vsts-extension* build, as shown in the following image:
+
+    ![](img/Artifact-owasp-zap-vsts-extension.png)
+
+    4.1. For the first `SSH` task, we need to specify the command to run and check the `Continue on error` option. This is required due to possible failing tests, that we don't want to prevent the deployment to proceed.
+
+    ![](img/SSH-ZAP-test.png)
+
+    > Tip: Rename `Display name` to make it clearer to understand what is going on here.
+
+    Change the URI with the value of your own website, published on the previous Labs, and copy the updated command:
+
+    ```bash
+    docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-weekly zap-baseline.py -t https://smarthotel360lcu4bmxi7kl4w.azurewebsites.net -g gen.conf -r OwaspZapReport.html 
+    ```
+
+    4.2. Before going further we need to configure the SSH service connection to the provisioned Docker machine.
+    Press the *Manage* button, *New service connection*, *SSH*, and fill in the following details, replacing *Host name*, *User name* and *Password* with your own details, specified on the previous steps of this lab.
+
+    ![](img/SSH-service-connection.png)
+
+    Press *OK* and go back to the previous tab, on the release pipeline. Refresh the *SSH service connection* drop down and select the fresh new connection. 
+
+    4.3. On the second `SSH` task insert the following command:
+
+    ```bash
+    docker stop $(docker ps -a -q)
+    docker run -v $(pwd):/usr/share/nginx/html -d -p 80:80 nginx
+    ```
+
+    This will copy the generated test report to the NGINX container, making it publicaly available.
+    Rename the *Display name* as suggested before, making it clearer to understand in the future.
+
+    4.4. Next we'll be adding a *Powershell* task to download the generated test report and pass into the release pipeline.
+
+    Add the following command to download the file, changing the *URI* parameter as before.
+
+    ```bash
+    Invoke-WebRequest -Uri "http://msreadydockervm.eastus.cloudapp.azure.com/OwaspZapReport.html" -OutFile "$(System.DefaultWorkingDirectory)\OwaspZapReport.html"
+    ```
+
+    ![](img/Powershell-Download.png)
+   
+   4.5. To finish, add a *Command Line* task, were we'll be executing the `owasp-zap-vsts-tool.exe` to attach the report into Azure DevOps.
+
     ![](img/Add-OWASP-tasks-search.png)
 
-4. Paste this command on the *Script* text box, changing the values between `<>`, as seen in the image.
+5. Paste this command on the *Script* text box, changing the values between `<>`, as seen in the image.
 
-    `$(System.DefaultWorkingDirectory)/owasp-zap-vsts CI/drop/owasp-zap-vsts-tool/bin/Release/owasp-zap-vsts-tool.exe attachreport collectionUri="<Azure DevOps ORGANIZATION URI>" teamProjectName="MsReadyLab" releaseUri=$(Release.ReleaseUri) releaseEnvironmentUri=$(Release.EnvironmentUri) filepath=$(System.DefaultWorkingDirectory)\OwaspZapReport.html personalAccessToken=<GENERATED PERSONAL ACCESS TOKEN>`
+    ```bash
+    $(System.DefaultWorkingDirectory)/owasp-zap-vsts CI/drop/owasp-zap-vsts-tool/bin/Release/owasp-zap-vsts-tool.exe attachreport collectionUri="<Azure DevOps ORGANIZATION URI>" teamProjectName="MsReadyLab" releaseUri=$(Release.ReleaseUri) releaseEnvironmentUri=$(Release.EnvironmentUri) filepath=$(System.DefaultWorkingDirectory)\OwaspZapReport.html personalAccessToken=<GENERATED PERSONAL ACCESS TOKEN>
+    ```
 
-    ![](img/Add-OWASP-tasks-Report.png)
+    ![](img/OWASP-Attach-Report.png)
 
-5. Paste this for the *Create bugs* task, changing again the values between `<>`.
+6. To finish the Security Lab, run the release pipeline and, when it has finished, navigate to your website made available using NGINX, appending *OwaspZapReport.html*, and you should see something like:
 
-    `$(System.DefaultWorkingDirectory)/owasp-zap-vsts CI/drop/owasp-zap-vsts-tool/bin/Release/owasp-zap-vsts-tool.exe createbugfrompentest collectionUri="<Azure DevOps ORGANIZATION URI>" teamProjectName="MsReadyLab" team=Demo releaseUri=$(Release.ReleaseUri) releaseEnvironmentUri=$(Release.EnvironmentUri) filepath=$(Agent.ReleaseDirectory)\OwaspZapAlerts.xml personalAccessToken=<GENERATED PERSONAL ACCESS TOKEN>`
-
-    ![](img/Add-OWASP-tasks.png)
+    ![](img/NGINX-ZAP-Report.png) 
 
 
 ## Next step:  
