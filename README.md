@@ -79,6 +79,15 @@ And you will get all the content on the *C:\technical-lab* folder, as shown in t
 
         ![](img/ARMOutputs-success.png) 
 
+    4. Navigate to `https://marketplace.visualstudio.com/items?itemName=keesschollaart.AzureCostInsights`, selecting the *Get it free* button.
+
+        ![](img/AzureCostInsightsMarketplace.png)
+
+    5. As for the previous extension, select the recently created Azure DevOps Organization on the dropdown, and press *Install*.
+
+    6. After a few seconds you should see a success message. Now, select the *Proceed to organization*.
+
+
 * Create a free account for *WhiteSource Bolt* 
 
     1. Navigate to *WhiteSource Bolt* under *Pipelines -> WhiteSource Bolt*.
@@ -478,7 +487,7 @@ Start by adding two `SSH` tasks, one for running the tests and another for publi
     Add the following command to download the file, changing the *URI* parameter as before.
 
     ```bash
-    Invoke-WebRequest -Uri "http://msreadydockervm.eastus.cloudapp.azure.com/OwaspZapReport.html" -OutFile "$(System.DefaultWorkingDirectory)\OwaspZapReport.html"
+    Invoke-WebRequest -Uri "http://<msreadydockervm>.<eastus>.cloudapp.azure.com/OwaspZapReport.html" -OutFile "$(System.DefaultWorkingDirectory)\OwaspZapReport.html"
     ```
 
     ![](img/Powershell-Download.png)
@@ -517,21 +526,10 @@ It's easy to get your Azure Costs out of control. _Wouldn't it be great to get i
 Costs are a concern of everyone, developers, product owners and operations.
 They come together in Azure DevOps, so why not show these insights there?
 
-[*Azure Cost Insights*](https://marketplace.visualstudio.com/items?itemName=keesschollaart.AzureCostInsights) is a widget that you can put on your Azure DevOps Dashboard..
+*Azure Cost Insights* is a widget that you can put on your Azure DevOps Dashboard.
 
 This widget is built with the belief that cost insights need to be scoped to your spendings. 
 
-### Key Features
-
-- Learn about the costs per product, per environment, per region, etc....
-- Pivot by Resouce Group, Resouce Type, Subscription or Tag
-- Detect sudden spikes in a day, instead of at the end of the month
-- Fully customizable: bar & line chart-types, stacked & non-stacked, any timespan
-- Filter by subscription and then/or by the name of Resource Group, Resource Type or by the value of the selected Tag (using glob patterns)
-- All your cost data stay's within your Azure DevOps tenant, no external service dependency 
-- Leverages your existing Azure Service Connections integration for downloading your data
-- All Azure Subscription (offer) types are supported (like EA, PayG, MSDN, etc.) except CSP
-- 1 widget for free, additional widget-instances starting at 1$ per widget per month (in-app purchase)
 
 ### Getting started
 
@@ -540,21 +538,39 @@ You need to create an Azure Pipeline for the widget to work. This pipeline is go
 ![](img/flow.png)
  
 1. **Create the build pipeline**<br/>
-If you prefer to have your pipeline as (YAML) code, [this is supported and documented over here](https://github.com/keesschollaart81/AzureCostInsights.Marketplace/wiki/YAML-Pipeline).
 
-    - Create a new empty build (not release) pipeline and select a (preferable empty) repository
-    - Name the pipeline something like 'Cost Insights'
-    - Add the 'Download Cost Data' task for each subscription, then end with the 'Publish Cost Data' task 
-    - Depending on your Subscription Type (Pay as you Go, EA, CSP, etc.) you need to select the 'consumption' or the 'usage' API in the 'Download Cost Data' task. [More info here](https://github.com/keesschollaart81/AzureCostInsights.Marketplace/wiki/Usage-vs-Consumption-Api).
-    - Your pipeline will look like this:
-    ![](img/buildpipeline.png)
+    Navigate to *Pipelines*, *Builds* and *Import a pipeline*.
 
-2. **Queue the build** and wait for it to finish before continuing with step 3 <br/>
-While waiting, you are encouraged you to read the following tips:
-    - In the trigger's tab, disable the 'continuous' trigger and set a scheduled trigger, every night at 04:00 AM (these API's are unavailable ±00:00-03:00 UTC) and make sure 'Only schedule builds if the source or pipeline has changed' is **un**checked
-    - The build pipeline has, by default, a maximum duration of 60 minutes (see the 'options' tab), this might be to short depending on the size of your cost data. It takes ~10 minutes to download the costs for 100.000$
-    - Observe the artifacts of the build, this is the data that will be used by the widget
-    - Create only 1 cost pipeline, teams (within a project) can share it. Add multiple 'download cost data' task for each subscription
+    ![](img/CostInsights-Import-Build.png)
+
+    Drag and drop the `Cost Insights.json` file, located on the Lab repository under *~/files/Business/*, or Browse for the same file. Then, press *Import* to start the import process:
+
+    ![](img/CostInsights-Import.png)
+
+
+    After importing, configure the missing settings as following:
+
+    **Pipeline**
+    ```bash
+    Agent pool: Hosted VS2017
+    ```
+
+    **Get sources**
+    ```bash
+    Repository: SmartHotel360-Website
+    ```
+
+    **Download cost data**
+    ```bash
+    Azure RM Subscription: <Azure subscription being used in the lab>
+    ```
+
+    When you're finished, your  pipeline will look like this:
+    ![](img/CostInsights-Import-finish.png)
+
+2. **Queue the build** and wait for it to finish<br/>
+
+    ![](img/CostInsights-run.png)
 
 3. **Add the Widget to your Dashboard**<br/>
     - Go to your teams' dashboard and add the 'Azure Cost Insights' widget.
