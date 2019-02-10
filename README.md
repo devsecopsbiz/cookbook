@@ -506,7 +506,12 @@ Start by adding two `SSH` tasks, one for running the tests and another for publi
 
     ![](img/OWASP-Attach-Report.png)
 
-6. To finish the Security Lab, run the release pipeline and, when it has finished, navigate to your website made available using NGINX, appending *OwaspZapReport.html*, and you should see something like:
+6. To finish the Security Lab, run the release pipeline and, when it has finished, navigate to your website made available using NGINX.
+You can check the URI by navigating to the *Attach Report* task log:
+
+    ![](img/OWASP-Attach-Report-Navigate.png)
+
+    You should see something like:
 
     ![](img/NGINX-ZAP-Report.png) 
 
