@@ -494,7 +494,7 @@ It's easy to get your Azure Costs out of control. _Wouldn't it be great to get i
 Costs are a concern of everyone, developers, product owners and operations.
 They come together in Azure DevOps, so why not show these insights there?
 
-[*Azure Cost Insights*](https://marketplace.visualstudio.com/items?itemName=keesschollaart.AzureCostInsights) is a widget that you can put on your Azure DevOps Dashboard.
+[*Azure Cost Insights*](https://marketplace.visualstudio.com/items?itemName=keesschollaart.AzureCostInsights) is a widget that you can put on your Azure DevOps Dashboard..
 
 This widget is built with the belief that cost insights need to be scoped to your spendings. 
 
