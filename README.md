@@ -46,7 +46,7 @@ git clone https://github.com/devsecopsbiz/technical-lab.git
 
 And you will get all the content on the *C:\technical-lab* folder, as shown in the image:
 
-![](img/clonerepo.png)
+![](img/CloneRepo.png)
 
 ## Setup Azure DevOps Project
 
@@ -310,7 +310,7 @@ OWASP is a worldwide not-for-profit organization dedicated to helping improve th
     ![](img/AzureCloudShell.png)
 
     Since we're using brand new Subscriptions, we need to create a storage to support Cloud Shell.
-    
+
     Press `Show advanced settings` and fill in `Storage account` and `File share` before hitting the `Create storage` button.
     
     ![](img/CloudShellStorage.png)
