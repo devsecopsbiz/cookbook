@@ -131,7 +131,7 @@ For that, navigate to the following URL:
 
         ![](img/AzureDevOpsLab-ImportRepo.png)
 
-    2. Fill in the *Clone URL* with `https://github.com/Microsoft/SmartHotel360-Website.git`
+    2. Fill in the *Clone URL* with `https://github.com/devsecopsbiz/SmartHotel360-Website`
     and press *Import*:
 
         ![](img/AzureDevOpsLab-ImportRepo-CloneURL.png)
