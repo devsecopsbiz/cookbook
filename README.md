@@ -100,7 +100,7 @@ And you will get all the content on the *C:\technical-lab* folder, as shown in t
 
         ![](img/WhiteSourceBolt-success.png)
 
-* Import additional Git repos, required for the labs:
+* Import additional Git repositories, required for the labs:
 
     1. Navigate to *Repos* and on the upper repositories drop down, select *Import repository*:
 
@@ -133,7 +133,7 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
     ![](img/AzureDevOpsLab-Builds-01.png)
 
     ### WhiteSource Bolt Build
-    1. Under *New*, select *Import a pipeline* to import a precooked pipeline to build the recently imported repo:
+    1. Under *New*, select *Import a pipeline* to import a precooked pipeline to build the recently imported repository:
 
         ![](img/AzureDevOpsLab-Builds-02.png)
         
@@ -145,7 +145,7 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
 
         ![](img/AzureDevOpsLab-Builds-04.png)
   
-    4. Now select the Source Repo to the recently imported repository:
+    4. Now select the Source Repository to the recently imported repository:
 
         ![](img/AzureDevOpsLab-Builds-05.png)
 
@@ -157,7 +157,7 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
     
     Now we'll be using an alternative way to setup our CI build, leveraging a YAML file.
 
-    Navigate to the `owasp-zap-vsts-extension` repo, and drag and drop the `azure-pipelines.yml` file, located on the Lab contents you've downloaded, under *~/files/OWASP*, into the repository.
+    Navigate to the `owasp-zap-vsts-extension` repository, and drag and drop the `azure-pipelines.yml` file, located on the Lab contents you've downloaded, under *~/files/OWASP*, into the repository.
     You should end up with the following contents:
 
     ![](img/OWASP-pipeline.png)
@@ -214,7 +214,7 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
 
         ![](img/RemoveArtifact.png)
 
-    10. Now, add the `SmartHotel_Petchecker-Web` build artifact. This will make sure we're using the artifact comming from the build we've created before.
+    10. Now, add the `SmartHotel_Petchecker-Web` build artifact. This will make sure we're using the artifact coming from the build we've created before.
 
         ![](img/AddArtifact.png)
 
@@ -255,14 +255,14 @@ It should look something like this: `https://smarthotel360lcu4bmxi7kl4w.scm.azur
     ![](img/AzureDevOpsLab-Releases-CheckOutput-site.png)
 
 
-7. Now kick-off the full CI/CD pipeline by making an edit to the  code in the Azure DevOps code repo.
-Navigate back to *Repos*, *SmartHotel360-Website* repo, select `appsettings.Development.json` and press *Edit*
+7. Now kick-off the full CI/CD pipeline by making an edit to the  code in the Azure DevOps code repository.
+Navigate back to *Repos*, *SmartHotel360-Website* repository, select `appsettings.Development.json` and press *Edit*
 
     ![](img/AzureDevOpsLab-Repo-edit.png)
 
 8. Change the *Name* property value to something you want, and *Commit* the change after it
 
-    ![Repo change to trigger CI CD](img/AzureDevOpsLab-Repo-commit.png)
+    ![Repositoty change to trigger CI CD](img/AzureDevOpsLab-Repo-commit.png)
 
 
 ## Next step:  
