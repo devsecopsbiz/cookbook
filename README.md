@@ -29,7 +29,7 @@ This lab session builds on top of _AI-APP-ST201: The new trends of Dev*Ops (DEV-
 The first step is to create a brand new *Azure DevOps* Organization.
 Start by navigating to:
 
-```bash
+```
 https://dev.azure.com
 ```
 
@@ -59,7 +59,7 @@ This will allow you to have access to several pre-prepared assets, necessary for
 Search for *x64_x86 Cross Tools Prompt for VS 2017*, launching it in *Administrator mode*.
 Navigate to the root folder, by executing `cd\`, and then execute the following command:
 
-```bash
+```
 git clone https://github.com/devsecopsbiz/technical-lab.git
 ```
 
@@ -74,7 +74,7 @@ And you will get all the content on the *C:\technical-lab* folder, as shown in t
 * Start by creating a new Project using a preselected Lab.
 For that, navigate to the following URL:
 
-    ```bash
+    ```
     https://azuredevopsdemogenerator.azurewebsites.net/?name=WhiteSource-Bolt&templateid=77362
     ```
 
@@ -381,19 +381,19 @@ OWASP is a worldwide not-for-profit organization dedicated to helping improve th
 
     SSH to your new Docker host. Provide your own username and DNS name from the preceding steps:
 
-    ```bash
+    ```
     ssh azureuser@mypublicdns.eastus.cloudapp.azure.com
     ```
 
     Once logged in to the Docker host, let's run an NGINX container:
 
-    ```bash
+    ```
     sudo docker run -d -p 80:80 nginx
     ```
 
     The output is similar to the following example as the NGINX image is downloaded and a container started:
 
-    ```bash
+    ```
     Unable to find image 'nginx:latest' locally
     latest: Pulling from library/nginx
     efd26ecc9548: Pull complete
@@ -407,13 +407,13 @@ OWASP is a worldwide not-for-profit organization dedicated to helping improve th
 
     Check the status of the containers running on your Docker host as follows:
 
-    ```bash
+    ```
     sudo docker ps
     ```
 
     The output is similar to the following example, showing that the NGINX container is running and TCP ports 80 and 443 and being forwarded:
 
-    ```bash
+    ```
     CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS              PORTS                         NAMES
     b6ed109fb743        nginx               "nginx -g 'daemon off"   About a minute ago   Up About a minute   0.0.0.0:80->80/tcp, 443/tcp   adoring_payne
     ```
@@ -427,7 +427,7 @@ OWASP is a worldwide not-for-profit organization dedicated to helping improve th
 
     > Note: Replace the website URI with the one you've deployed earlier  
 
-    ```bash
+    ```
     docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-weekly zap-baseline.py \
         -t https://smarthotel360lcu4bmxi7kl4w.azurewebsites.net -g gen.conf -r testreport.html
     ```
@@ -462,7 +462,7 @@ OWASP is a worldwide not-for-profit organization dedicated to helping improve th
     3.5 Add a secret variable in the release for later use.
     Navigate to *Pipelines*, *Releases* and edit our release pipeline. Then, under *Variables*, add a new variable setting:
 
-    ```bash    
+    ```
     Name: PAT
     Value: <copied PAT token>
     Secret: press the locked button, hiding the content of the variable (making it a secret)
@@ -492,7 +492,7 @@ Start by adding two `SSH` tasks, one for running the tests and another for publi
 
     Change the URI with the value of your own website, published on the previous Labs, and copy the updated command:
 
-    ```bash
+    ```
     docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-weekly zap-baseline.py -t $(SmartHotelWebsiteURL) -g gen.conf -r $(Release.DefinitionName)_$(Release.ReleaseName)_OwaspZapReport.html
     ```
 
@@ -505,7 +505,7 @@ Start by adding two `SSH` tasks, one for running the tests and another for publi
 
     4.3. On the second `SSH` task insert the following command:
 
-    ```bash
+    ```
     docker stop $(docker ps -a -q)
     docker run -v $(pwd):/usr/share/nginx/html -d -p 80:80 nginx
     ```
@@ -517,7 +517,7 @@ Start by adding two `SSH` tasks, one for running the tests and another for publi
 
     Add the following command to download the file, changing the *URI* on both commands.
 
-    ```bash
+    ```
     Invoke-WebRequest -Uri "http://<msreadydockervm>.<eastus>.cloudapp.azure.com/$(Release.DefinitionName)_$(Release.ReleaseName)_OwaspZapReport.html" -OutFile "$(System.DefaultWorkingDirectory)\OwaspZapReport.html"
     ```
 
@@ -529,7 +529,7 @@ Start by adding two `SSH` tasks, one for running the tests and another for publi
 
 5. Paste this command on the *Script* text box as seen in the image, adapting the URI on the Echo command. 
 
-    ```bash
+    ```
     $(System.DefaultWorkingDirectory)/_owasp-zap-vsts-extension/drop/owasp-zap-vsts-tool/bin/Release/owasp-zap-vsts-tool.exe attachreport collectionUri="$(System.TeamFoundationCollectionUri)" teamProjectName="$(System.TeamProject)" releaseUri=$(Release.ReleaseUri) releaseEnvironmentUri=$(Release.EnvironmentUri) filepath=$(System.DefaultWorkingDirectory)\OwaspZapReport.html personalAccessToken=$(PAT)
 
     echo "http://<msreadydockervm>.<eastus>.cloudapp.azure.com/$(Release.DefinitionName)_$(Release.ReleaseName)_OwaspZapReport.html"
@@ -590,17 +590,17 @@ You need to create an Azure Pipeline for the widget to work. This pipeline is go
     ![](img/CostInsights-configuration.png)
 
     **Pipeline**
-    ```bash
+    ```
     Agent pool: Hosted VS2017
     ```
 
     **Get sources**
-    ```bash
+    ```
     Repository: SmartHotel360-Website
     ```
 
     **Download cost data**
-    ```bash
+    ```
     Azure RM Subscription: <Azure subscription being used in the lab>
     ```
 
