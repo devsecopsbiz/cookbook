@@ -623,9 +623,24 @@ You need to create an Azure Pipeline for the widget to work. This pipeline is go
     ![](img/CostInsights-run.png)
 
 3. **Add the Widget to your Dashboard**<br/>
-    - Go to your teams' dashboard and add the 'Azure Cost Insights' widget.
-    ![](img/addwidget.gif)
-  
+    - Go to your teams' dashboard and add a 'Azure Cost Insights' widget.
+
+        Navigate back to *Overview*, *Dashboards* and press the `Add a widget` button.
+
+        ![](img/Dashboard-AddWidget.png)
+
+        Then, search for the `Azure Cost Insights` widget and press the `Add` button.
+
+        ![](img/Dashboard-SearchWidget.png)
+
+        Configure it by selecting the build we've just created, grouping by *Resource Type* as shown in the image:
+
+        ![](img/CostInsights-resourcetype.png) 
+
+        Now add another 'Azure Cost Insights' and configure it as shown below:
+
+        ![](img/CostInsights-subscription.png)
+     
 ## Examples
 
 ![](img/screen2.png)
