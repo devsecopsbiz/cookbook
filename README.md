@@ -262,7 +262,7 @@ Navigate back to *Repos*, *SmartHotel360-Website* repository, select `appsetting
 
 8. Change the *Name* property value to something you want, and *Commit* the change after it
 
-    ![Repositoty change to trigger CI CD](img/AzureDevOpsLab-Repo-commit.png)
+    ![Repository change to trigger CI CD](img/AzureDevOpsLab-Repo-commit.png)
 
 
 ## Next step:  
@@ -482,7 +482,7 @@ Start by adding two `SSH` tasks, one for running the tests and another for publi
     docker run -v $(pwd):/usr/share/nginx/html -d -p 80:80 nginx
     ```
 
-    This will copy the generated test report to the NGINX container, making it publicaly available.
+    This will copy the generated test report to the NGINX container, making it publicly available.
     Rename the *Display name* as suggested before, making it clearer to understand in the future.
 
     4.4. Next we'll be adding a *Powershell* task to download the generated test report and pass into the release pipeline.
@@ -527,7 +527,7 @@ You can check the URI by navigating to the *Attach Report* task log:
 <a name="Business"></a>
 # Lab: Azure DevOps Business
 
-This workshop will guide you through the process of creating and configuring a set of specialized dashboards, each with a diferent scope that can be used by distinct team members and stakeholders. 
+This workshop will guide you through the process of creating and configuring a set of specialized dashboards, each with a different scope that can be used by distinct team members and stakeholders. 
 
 ## Azure Cost Insights
 
@@ -536,9 +536,9 @@ It's easy to get your Azure Costs out of control. _Wouldn't it be great to get i
 Costs are a concern of everyone, developers, product owners and operations.
 They come together in Azure DevOps, so why not show these insights there?
 
-*Azure Cost Insights* is a widget that you can put on your Azure DevOps Dashboard.
+*Azure Cost Insights* is a widget that you can add on your Azure DevOps Dashboard.
 
-This widget is built with the belief that cost insights need to be scoped to your spendings. 
+This widget is built with the belief that cost insights need to be scoped to your costs. 
 
 
 ### Getting started
@@ -606,7 +606,7 @@ Follow these steps to create a report in Power BI desktop that shows a **daily a
 	a. Open **Analytics views**  
 	b. Create a custom Analytics view for your data.   
 2. From the Power BI Desktop:  
-	a. Get the dataset defined by the Analytics view   
+	a. Get the data set defined by the Analytics view   
 	b. Create a trend report  
 	c. Apply filters to your trend report  
 	d. Create a card and apply the Is Current=True filter to show current count.  
@@ -667,7 +667,7 @@ Choose **Continue** to move to the next tab.
 
 	Choose **Continue** to move to the next tab. 
 
-7. On the last tab, **Verification**, click **Verify view**. The system will verify your view by running a test query against the dataset it defines and validate all your filter criteria. 
+7. On the last tab, **Verification**, click **Verify view**. The system will verify your view by running a test query against the data set it defines and validate all your filter criteria. 
 
     ![](img/active-bugs-verify.png)
   
@@ -737,7 +737,7 @@ Choose **Continue** to move to the next tab.
 
     ![](img/card-active-bugs.png)   
     
-3. To get the latest count, add **Is Current** as a page level filter, and select the True checkbox. The **Is Current** field is added automatically to all datasets, marking the rows that contain the latest revision of the work items.
+3. To get the latest count, add **Is Current** as a page level filter, and select the True checkbox. The **Is Current** field is added automatically to all data sets, marking the rows that contain the latest revision of the work items.
 
     ![](img/iscurrent.png)   
    
@@ -755,6 +755,6 @@ Choose **Continue** to move to the next tab.
 
 ## Continue to explore your data
 
-Analytics views provide you with a great deal of power and flexibility to filter your data and generate useful reports quickly and easily using Power BI. Within a custom view, you can create datasets that span multiple teams or projects. 
+Analytics views provide you with a great deal of power and flexibility to filter your data and generate useful reports quickly and easily using Power BI. Within a custom view, you can create data sets that span multiple teams or projects. 
 
 *************
