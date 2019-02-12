@@ -295,6 +295,25 @@
 								"XmlVariableSubstitution": "false",
 								"JSONFiles": ""
 							}
+						},
+						{
+							"environment": {},
+							"taskId": "d9bafed4-0b18-4f58-968d-86655b4d2ce9",
+							"version": "2.*",
+							"name": "Echo Website Name",
+							"refName": "",
+							"enabled": true,
+							"alwaysRun": false,
+							"continueOnError": false,
+							"timeoutInMinutes": 0,
+							"definitionType": "task",
+							"overrideInputs": {},
+							"condition": "succeeded()",
+							"inputs": {
+								"script": "echo $(SmartHotelWebsiteURL)",
+								"workingDirectory": "",
+								"failOnStderr": "false"
+							}
 						}
 					]
 				}

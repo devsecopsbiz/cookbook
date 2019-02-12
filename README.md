@@ -166,8 +166,10 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
 
         ![](img/AzureDevOpsLab-Builds-03.png)
 
-        > Change the `Name`, removing the `-import` part.
-        The final name should be **SmartHotel_Petchecker-Web**.
+        Change the `Name`, removing the `-import` part.
+        The final name should be **SmartHotel_Petchecker-Web**, as shown in the image:
+
+        ![](img/AzureDevOpsLab-Builds-031.png)
     
     3. Select the `Hosted VS2017` Agent pool:
 
@@ -206,9 +208,9 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
 
         ![](img/AzureDevOpsLab-Releases-02.png)
 
-    2. Navigate back to `All pipelines` and `Import a release pipeline`:
-
         ![](img/AzureDevOpsLab-Releases-04.png)
+
+    2. Navigate back to `All pipelines` and `Import a release pipeline`:
 
         ![](img/AzureDevOpsLab-Releases-05.png)
 
@@ -228,11 +230,13 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
 
         ![](img/ReleasePipeline_SetAgentPool.png)
 
-    7. Select the first task and, under *Azure Subscription*, press `New`:
+    7. Select the first task and, under *Azure Subscription*, open the dropdown:
 
         ![](img/AzureDevOpsLab-Releases-09.png)
 
-    8. This opens a pop up where we'll have to fill in the details of our *Azure Subscription*, where we'll be deploying out solution:
+    8. This should show you the Azure subscription your user has access to, and where we'll be deploying out solution:
+
+        ![](img/AzureSubscriptionSelect.png)
 
         Step in each one of the tasks with error, selecting and authorizing an Azure Subscription to use in the lab. 
 
@@ -257,28 +261,23 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
 
     ![](img/AzureDevOpsLab-Builds-Run-01.png)
 
-2. Monitor the builds and wait for the build to complete
+2. Monitor the build logs and wait for it to complete
 
    ![](img/AzureDevOpsLab-Builds-Run-end.png)
 
-3. The release will automatically start when the build is complete (be patient, this can take some time). Review the results as it is complete. 
+3. The release will be triggered automatically when the build is complete (be patient, this can take some time). Review the results as it is complete. 
 
    ![](img/AzureDevOpsLab-Releases-Run-executing.png)
 
-4. Navigate to the deploy logs and check the details regarding the last step, `Deploy SmartHotel Website`.
+4. Navigate to the release logs and check the details regarding the last step, `Echo Website Name`.
 
    ![](img/AzureDevOpsLab-Releases-CheckOutput-deploytask.png)
 
-5. Go to the end of the log, and grab the URL of the destination website.
-It should look something like this: `https://smarthotel360lcu4bmxi7kl4w.scm.azurewebsites.net/api/deployments/21548112613183`
-
-    Grab that value.
+    Here you should see the website URL. Press <Ctrl> and click on the URL to navigate to it.
 
     ![](img/AzureDevOpsLab-Releases-CheckOutput-1.png)
 
-6. Using this, remove the `scm` and `api` details, ending up with a URL like: `https://smarthotel360lcu4bmxi7kl4w.azurewebsites.net/`
-
-    Navigate to the new URL and you should be see the website we've just deployed.
+    The website we've just deployed looks like :
 
     ![](img/AzureDevOpsLab-Releases-CheckOutput-site.png)
 
@@ -589,22 +588,14 @@ You need to create an Azure Pipeline for the widget to work. This pipeline is go
 
     ![](img/CostInsights-configuration.png)
 
-    **Pipeline**
-    ```
-    Agent pool: Hosted VS2017
-    ```
+    **Pipeline** -> **Agent pool**: Hosted VS2017
 
-    **Get sources**
-    ```
-    Repository: SmartHotel360-Website
-    ```
-
-    **Download cost data**
-    ```
-    Azure RM Subscription: <Azure subscription being used in the lab>
-    ```
+    **Get sources** -> **Repository**: SmartHotel360-Website
+    
+    **Download cost data** -> **Azure RM Subscription**: `Azure subscription being used in the lab`
 
     When you're finished, your  pipeline will look like this:
+
     ![](img/CostInsights-Import-finish.png)
 
 2. **Queue the build** and wait for it to finish<br/>
