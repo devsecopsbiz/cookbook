@@ -1,4 +1,4 @@
-[![Build Status](https://dev.azure.com/MSREADY19Sandbox/devsecopsbiz-session/_apis/build/status/technical-lab/devsecopsbiz.technical-lab?branchName=master)](https://dev.azure.com/MSREADY19Sandbox/devsecopsbiz-session/_build/latest?definitionId=10&branchName=master)
+[![Build Status](https://dev.azure.com/MSREADY19Sandbox/devsecopsbiz-session/_apis/build/status/GitHub_LabMDBuild?branchName=master)](https://dev.azure.com/MSREADY19Sandbox/devsecopsbiz-session/_build/latest?definitionId=12&branchName=master)
 
 # Microsoft Ready, Feb 2019
 ## AI-APP-ST300: Hands on Dev*Ops (Dev-Sec-Ops-Biz) 
