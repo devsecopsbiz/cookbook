@@ -11,14 +11,9 @@ As such, buzz words like _DevSecOps_ and even _DevSecOpsBiz_ are becoming more p
 
 This lab session builds on top of _AI-APP-ST201: The new trends of Dev*Ops (DEV-SEC-OPS-BIZ)_, allowing you to experience first hand the construction of a real world scenario.
 
-## Prerequisites 
-Before we get started we need to ensure some prerequisites required for the lab.
-
-* Azure Account [Azure Portal](https://portal.azure.com)
-* Azure DevOps Services Organization [Azure DevOps](https://dev.azure.com/)
-
 ## Lab steps
-* Start by [creating an Azure DevOps Project](#AzDevOps)
+* Start by setting up an [Azure DevOps Organization](#AzDevOpsOrg)
+* Then, [create an Azure DevOps Project](#AzDevOps) for us to work in
 * Now let's [setup the build and release for the application](#CICD)
 * Next, we'll want to [include Security into the pipeline](#Security)
 * And to wrap up, let's [gather Business information](#Business)
@@ -28,19 +23,43 @@ Before we get started we need to ensure some prerequisites required for the lab.
 
 *********
 
+<a name="AzDevOpsOrg"></a>
+# Lab: Create Azure DevOps Organization 
+
+The first step is to create a brand new *Azure DevOps* Organization.
+Start by navigating to:
+
+```bash
+https://dev.azure.com
+```
+
+Press `Start free`.
+
+![](img/AzDevOpsOrgStart.png)
+
+And sign in with the supplied credentials for the lab.
+
+![](img/AzDevOpsOrgSignIn.png)
+
+And then press `Continue`.
+
+![](img/AzDevOpsOrgContinue.png)
+
+
+*********
+
 <a name="AzDevOps"></a>
 # Lab: Create Azure DevOps Project 
 
-This workshop will guide you through the initial setup of an Azure DevOps Project, providing a quicker, prebuilt setup.
+This lab will guide you through the initial setup of an Azure DevOps Project, providing a quicker, prebuilt setup.
 
 The first required step is to clone the public GitHub repository where the Lab is hosted.
 This will allow you to have access to several pre-prepared assets, necessary for the different Lab modules we'll be implementing.
 
 Search for *x64_x86 Cross Tools Prompt for VS 2017*, launching it in *Administrator mode*.
-Then execute the following:
+Navigate to the root folder, by executing `cd\`, and then execute the following command:
 
 ```bash
-cd\
 git clone https://github.com/devsecopsbiz/technical-lab.git
 ```
 
@@ -52,7 +71,13 @@ And you will get all the content on the *C:\technical-lab* folder, as shown in t
 
 >  Use Azure DevOps Labs to create a preconfigured project and enrich it for a quick start.
 
-* Start by creating a new Project using a preselected [Lab](https://azuredevopsdemogenerator.azurewebsites.net/?name=WhiteSource-Bolt&templateid=77362)
+* Start by creating a new Project using a preselected Lab.
+For that, navigate to the following URL:
+
+    ```bash
+    https://azuredevopsdemogenerator.azurewebsites.net/?name=WhiteSource-Bolt&templateid=77362
+    ```
+
     1. Navigate to the Azure DevOps Demo Generator and *Sign In* with the credentials you've used to create the Azure DevOps Organization:
     
         ![Azure DevOps Lab Sign In](img/AzureDevOpsLab-SignIn.png)
@@ -140,6 +165,9 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
     2. Drag and drop the `SmartHotel_Petchecker-Web.json` file, located on the Lab repository under *~/files/SmartHotel/*, or Browse for the same file. Then, press *Import* to start the import process:
 
         ![](img/AzureDevOpsLab-Builds-03.png)
+
+        > Change the `Name`, removing the `-import` part.
+        The final name should be **SmartHotel_Petchecker-Web**.
     
     3. Select the `Hosted VS2017` Agent pool:
 
@@ -225,7 +253,7 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
 
 #### Run a test build
 
-1. In Azure DevOps, click on Builds, select each build and click the "Queue" button on the right upper corner.
+1. In Azure DevOps, click on Builds, navigate to `Folders`, select each build and click the "Queue" button on the right upper corner.
 
     ![](img/AzureDevOpsLab-Builds-Run-01.png)
 
