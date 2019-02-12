@@ -464,7 +464,7 @@ OWASP is a worldwide not-for-profit organization dedicated to helping improve th
     ```
     Name: PAT
     Value: <copied PAT token>
-    Secret: press the locked button, hiding the content of the variable (making it a secret)
+    Secret: press the locker button, making it a secret, hiding the contents
     ```
 
     You should get the following configuration:
@@ -476,6 +476,8 @@ OWASP is a worldwide not-for-profit organization dedicated to helping improve th
 
 4. Let's get back to the Release pipeline and add some extra tasks to launch the ZAP test and grab the results.
 Start by adding two `SSH` tasks, one for running the tests and another for publishing the test report to a public website. 
+
+    Under `Pipeline`, `Stages`, view stage tasks:
 
     ![](img/Add-OWASP-tasks-navigate.png)
 
