@@ -230,13 +230,31 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
 
         ![](img/ReleasePipeline_SetAgentPool.png)
 
-    7. Select the first task and, under *Azure Subscription*, open the dropdown:
+    7. Select the first task and, under *Azure Subscription*, select the **Manage** button.
+    It will redirect you to a page were we'll be configuring access to the Resource Group from our Azure Subscription.
 
         ![](img/AzureDevOpsLab-Releases-09.png)
 
-    8. This should show you the Azure subscription your user has access to, and where we'll be deploying out solution:
+        Under `New service connection`, select `Azure Resource Manager`:
 
-        ![](img/AzureSubscriptionSelect.png)
+        ![](img/ServiceConnections.png)
+
+        Select the available *resource group* from the dropdown, give the service connection a name and press OK.
+
+        ![](img/ServiceConnectionConfig.png)
+
+        You should then see a new Service connection appear:
+
+        ![](img/ServiceConnectionFinish.png)
+
+ 
+    8. Going back to the `release pipeline`, the dropdown should now show you the brand new *Service connection*.
+
+        Select it.
+        > If it hasn't loaded, press the refresh button on the right and then open the dropdown again.
+
+        ![](img/AzureSubscriptionAvailable.png)
+
 
         Step in each one of the tasks with error, selecting and authorizing an Azure Subscription to use in the lab. 
 
