@@ -27,13 +27,13 @@ This lab session builds on top of _AI-APP-ST201: The new trends of Dev*Ops (DEV-
 # Lab: Create Azure DevOps Organization 
 
 The first step is to create a brand new *Azure DevOps* Organization.
-Start by navigating to:
+Start by opening your favorite browser and navigate to:
 
 ```
 https://dev.azure.com
 ```
 
-Press `Start free`.
+Press **Start free**.
 
 ![](img/AzDevOpsOrgStart.png)
 
@@ -44,6 +44,11 @@ And sign in with the supplied credentials for the lab.
 And then press `Continue`.
 
 ![](img/AzDevOpsOrgContinue.png)
+
+You will end up with an empty Azure DevOps Organization. 
+It's not necessary to create any *Project* at this time, you can proceed to next step.
+
+![](img/EmptyDevOpsOrg.png)
 
 
 *********
@@ -166,16 +171,16 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
 
         ![](img/AzureDevOpsLab-Builds-03.png)
 
-        Change the `Name`, removing the `-import` part.
+        Change the *Name*, removing the *-import* part.
         The final name should be **SmartHotel_Petchecker-Web**, as shown in the image:
 
         ![](img/AzureDevOpsLab-Builds-031.png)
     
-    3. Select the `Hosted VS2017` Agent pool:
+    3. Select the **Hosted VS2017** Agent pool:
 
         ![](img/AzureDevOpsLab-Builds-04.png)
   
-    4. Now select the Source Repository to the recently imported repository:
+    4. Now select the *Source Repository* to the recently imported repository:
 
         ![](img/AzureDevOpsLab-Builds-05.png)
 
@@ -187,7 +192,7 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
     
     Now we'll be using an alternative way to setup our CI build, leveraging a YAML file.
 
-    Navigate to the `owasp-zap-vsts-extension` repository, and drag and drop the `azure-pipelines.yml` file, located on the Lab contents you've downloaded, under *~/files/OWASP*, into the repository.
+    Navigate to the *owasp-zap-vsts-extension* repository, and drag and drop the **azure-pipelines.yml** file, located on the Lab contents you've downloaded, under *~/files/OWASP*, into the repository.
     You should end up with the following contents:
 
     ![](img/OWASP-pipeline.png)
@@ -199,22 +204,22 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
 
 ## Create Release Pipeline
 
-* Under *Pipelines*, navigate to *Releases* and press `New pipeline`
+* Under *Pipelines*, navigate to *Releases* and press **New pipeline**
 
     ![](img/AzureDevOpsLab-Releases-01.png)
 
     1. We first need to create a dummy, empty, Release pipeline in order for the *Import* to become available. 
-    Let's do this by pressing `New pipeline`, `Empty job` and `Save`:
+    Let's do this by pressing *New pipeline*, *Empty job* and **Save**:
 
         ![](img/AzureDevOpsLab-Releases-02.png)
 
         ![](img/AzureDevOpsLab-Releases-04.png)
 
-    2. Navigate back to `All pipelines` and `Import a release pipeline`:
+    2. Navigate back to *All pipelines* and *Import a release pipeline*:
 
         ![](img/AzureDevOpsLab-Releases-05.png)
 
-    3. Drag and drop, or navigate, to select the `SmartHotel360_Website-Deploy.json` file:
+    3. Drag and drop, or navigate, to select the **SmartHotel360_Website-Deploy.json** file:
 
         ![](img/AzureDevOpsLab-Releases-06.png)
 
@@ -226,7 +231,7 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
 
         ![](img/AzureDevOpsLab-Releases-08.png)
 
-    6. Select the *Agent job*, and set the *Agent pool* to `Hosted`
+    6. Select the *Agent job*, and set the *Agent pool* to **Hosted**
 
         ![](img/ReleasePipeline_SetAgentPool.png)
 
@@ -248,7 +253,7 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
         ![](img/ServiceConnectionFinish.png)
 
  
-    8. Going back to the `release pipeline`, the dropdown should now show you the brand new *Service connection*.
+    8. Going back to the *release pipeline*, the dropdown should now show you the brand new *Service connection*.
 
         Select it.
         > If it hasn't loaded, press the refresh button on the right and then open the dropdown again.
@@ -258,13 +263,13 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
 
         Step in each one of the tasks with error, selecting and authorizing an Azure Subscription to use in the lab. 
 
-        > For the *ARM Outputs* task in particular, it's also required to specify the *Azure Connection Type* as `Azure Resource Manager`
+        > For the *ARM Outputs* task in particular, it's also required to specify the *Azure Connection Type* as **Azure Resource Manager**
 
     9. Remove the existing *Artifact*.
 
         ![](img/RemoveArtifact.png)
 
-    10. Now, add the `SmartHotel_Petchecker-Web` build artifact. This will make sure we're using the artifact coming from the build we've created before.
+    10. Now, add the **SmartHotel_Petchecker-Web** build artifact. This will make sure we're using the artifact coming from the build we've created before.
 
         ![](img/AddArtifact.png)
 
@@ -275,7 +280,7 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
 
 #### Run a test build
 
-1. In Azure DevOps, click on Builds, navigate to `Folders`, select each build and click the "Queue" button on the right upper corner.
+1. In Azure DevOps, click on Builds, navigate to **Folders**, select each build and click the "Queue" button on the right upper corner.
 
     ![](img/AzureDevOpsLab-Builds-Run-01.png)
 
@@ -287,7 +292,7 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
 
    ![](img/AzureDevOpsLab-Releases-Run-executing.png)
 
-4. Navigate to the release logs and check the details regarding the last step, `Echo Website Name`.
+4. Navigate to the release logs and check the details regarding the last step, **Echo Website Name**.
 
    ![](img/AzureDevOpsLab-Releases-CheckOutput-deploytask.png)
 
@@ -301,7 +306,7 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
 
 
 7. Now kick-off the full CI/CD pipeline by making an edit to the  code in the Azure DevOps code repository.
-Navigate back to *Repos*, *SmartHotel360-Website* repository, select `appsettings.Development.json` and press *Edit*
+Navigate back to *Repos*, *SmartHotel360-Website* repository, select **appsettings.Development.json** and press *Edit*
 
     ![](img/AzureDevOpsLab-Repo-edit.png)
 
@@ -330,7 +335,7 @@ It covers over 200 programming languages support and continuous tracking of mult
 
 1. In Azure DevOps, click on "Pipelines" on the left menu and then click "Builds"
 
-2. Select each build pipeline, click the "Edit" button, and select the `WhiteSource Bolt` task
+2. Select each build pipeline, click the "Edit" button, and select the **WhiteSource Bolt** task
 
     ![](img/AzureDevOpsLab-Builds-WhiteSourceBolt.png)
 
@@ -356,7 +361,7 @@ OWASP is a worldwide not-for-profit organization dedicated to helping improve th
 
     Since we're using brand new Subscriptions, we need to create a storage to support Cloud Shell.
 
-    Press `Show advanced settings` and fill in `Storage account` and `File share` before hitting the `Create storage` button.
+    Press **Show advanced settings** and fill in **Storage account** and **File share** before hitting the **Create storage** button.
     
     ![](img/CloudShellStorage.png)
 
@@ -493,7 +498,7 @@ OWASP is a worldwide not-for-profit organization dedicated to helping improve th
 
 
 4. Let's get back to the Release pipeline and add some extra tasks to launch the ZAP test and grab the results.
-Start by adding two `SSH` tasks, one for running the tests and another for publishing the test report to a public website. 
+Start by adding two **SSH** tasks, one for running the tests and another for publishing the test report to a public website. 
 
     Under `Pipeline`, `Stages`, view stage tasks:
 
@@ -542,7 +547,7 @@ Start by adding two `SSH` tasks, one for running the tests and another for publi
 
     ![](img/Powershell-Download.png)
    
-   4.5. To finish, add a *Command Line* task, were we'll be executing the `owasp-zap-vsts-tool.exe` to attach the report into Azure DevOps.
+   4.5. To finish, add a *Command Line* task, were we'll be executing the **owasp-zap-vsts-tool.exe** to attach the report into Azure DevOps.
 
     ![](img/Add-OWASP-tasks-search.png)
 
@@ -600,7 +605,7 @@ You need to create an Azure Pipeline for the widget to work. This pipeline is go
 
     ![](img/CostInsights-Import-Build.png)
 
-    Drag and drop the `Cost Insights.json` file, located on the Lab repository under *~/files/Business/*, or Browse for the same file. Then, press *Import* to start the import process:
+    Drag and drop the **Cost Insights.json** file, located on the Lab repository under *~/files/Business/*, or Browse for the same file. Then, press *Import* to start the import process:
 
     ![](img/CostInsights-Import.png)
 
@@ -625,11 +630,11 @@ You need to create an Azure Pipeline for the widget to work. This pipeline is go
 3. **Add the Widget to your Dashboard**<br/>
     - Go to your teams' dashboard and add a 'Azure Cost Insights' widget.
 
-        Navigate back to *Overview*, *Dashboards* and press the `Add a widget` button.
+        Navigate back to *Overview*, *Dashboards* and press the **Add a widget** button.
 
         ![](img/Dashboard-AddWidget.png)
 
-        Then, search for the `Azure Cost Insights` widget and press the `Add` button.
+        Then, search for the **Azure Cost Insights** widget and press the **Add** button.
 
         ![](img/Dashboard-SearchWidget.png)
 
