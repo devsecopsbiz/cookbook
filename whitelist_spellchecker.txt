@@ -13,3 +13,13 @@ quickstart
 eastus
 azurecli
 NGINX
+fqdns
+azureuser
+mypublicdns
+cloudapp
+testreport
+attachreport
+filepath
+addwidget
+iscurrent
+powerbi
