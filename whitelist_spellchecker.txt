@@ -1,0 +1,15 @@
+CICD
+preconfigured
+dropdown
+freeaccount
+repos
+Repo
+vsts
+OWASP
+Petchecker
+deploytask
+appsettings
+quickstart
+eastus
+azurecli
+NGINX
