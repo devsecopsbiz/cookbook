@@ -400,7 +400,7 @@ OWASP is a worldwide not-for-profit organization dedicated to helping improve th
 
     Cloud Shell already provides us the latest Azure CLI, allowing us to execute the following commands.
 
-    First, grab the resource group name already created for the lab:
+    First, grab the resource group name (*name* property) already created for the lab. Paste it on notepad for example.
 
     ```azurecli
     az group list
@@ -408,12 +408,12 @@ OWASP is a worldwide not-for-profit organization dedicated to helping improve th
 
     ![](img/RGName.png)
 
-    Next, deploy a VM with that includes the Azure Docker VM extension from [this Azure Resource Manager template on GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu). When prompted, provide your own unique values for *newStorageAccountName*, *adminUsername*, *adminPassword*, and *dnsNameForPublicIP*:
+    Next, deploy a VM with that includes the Azure Docker VM extension from [this Azure Resource Manager template on GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu). When prompted, provide your own unique values for *adminUsername*, *adminPassword*, and *dnsNameForPublicIP*:
 
     > Replace the name of the resource group with the one you got previously
 
     ```azurecli
-    az group deployment create --resource-group msReadyDevOps --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/docker-simple-on-ubuntu/azuredeploy.json
+    az group deployment create --resource-group <REPLACE HERE> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/docker-simple-on-ubuntu/azuredeploy.json
     ```
 
     It takes a few minutes for the deployment to finish.
@@ -425,7 +425,7 @@ OWASP is a worldwide not-for-profit organization dedicated to helping improve th
     > Replace the name of the resource group with the one you got previously
 
     ```azurecli
-    az vm show --resource-group msReadyDevOps --name myDockerVM --show-details --query [fqdns] --output tsv
+    az vm show --resource-group <REPLACE HERE> --name myDockerVM --show-details --query [fqdns] --output tsv
     ```
 
     SSH to your new Docker host. Provide your own username and DNS name from the preceding steps:
