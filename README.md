@@ -303,6 +303,7 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
         ![](img/AzureDevOpsLab-Releases-trigger.png)
 
     13. Press the **Save** button, confirming with the **OK** button.
+    > Important: Set the release pipeline name to **SmartHotel360_Website-Deploy**
 
 
 #### Run a test build
