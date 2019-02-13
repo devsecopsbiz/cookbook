@@ -283,7 +283,7 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
     9. Navigate to *Variables* and update the values.
 
         **location:** West US
-        
+
         **ResourceGroup:** <paste the resource group we've saved earlier>
 
         ![](img/VariablesUpdate.png)
@@ -396,7 +396,7 @@ OWASP is a worldwide not-for-profit organization dedicated to helping improve th
 
     After a few seconds you should see something like this:
 
-    ![](img/AzureCloudShell-ready.png)
+    ![](img/AzureCloudShellBash-ready.png)
 
     Cloud Shell already provides us the latest Azure CLI, allowing us to execute the following commands.
 
