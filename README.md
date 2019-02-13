@@ -282,6 +282,8 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
 
     10. Now, add the **SmartHotel_Petchecker-Web** build artifact. This will make sure we're using the artifact coming from the build we've created before.
 
+        > Important: set the *Source alias* to `SmartHotel Petchecker Web`
+
         ![](img/AddArtifact.png)
 
     11. To finish, enable the Continuous Deployment trigger
