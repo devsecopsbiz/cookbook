@@ -122,6 +122,8 @@ For that, on your browser navigate to the following URL:
 
     6. After a few seconds you should see a success message. Now, select the *Proceed to organization*.
 
+    7. Now, select the project you've just created, by pressing the name.
+
 
 * Create a free account for *WhiteSource Bolt* 
 
@@ -477,7 +479,7 @@ OWASP is a worldwide not-for-profit organization dedicated to helping improve th
     ![](img/OWASP-finish.png)
 
     
-3. Now let's grab a personal access token (PAT) we'll be needing later on.
+3. Navigate back to your Azure DevOps Project and let's grab a personal access token (PAT) we'll be needing later on.
     > Save that PAT token, it can't be retrieved later
 
     3.1 Navigate to the user profile and select *Security*
@@ -496,14 +498,15 @@ OWASP is a worldwide not-for-profit organization dedicated to helping improve th
 
     ![](img/PAT-token.png)
 
-    3.5 Add a secret variable in the release for later use.
-    Navigate to *Pipelines*, *Releases* and edit our release pipeline. Then, under *Variables*, add a new variable setting:
+4. On your Azure DevOps project, navigate to *Pipelines*, *Releases* *SmartHotel360_Website-Deploy*, and press the **Edit** button.
 
-    ```
-    Name: PAT
-    Value: <copied PAT token>
-    Secret: press the locker button, making it a secret, hiding the contents
-    ```
+    Then, under *Variables*, add a new variable setting:
+
+    **Name:** PAT
+
+    **Value:** <copied PAT token>
+    
+    **Secret:** press the locker button, making it a secret, hiding the contents
 
     You should get the following configuration:
 
