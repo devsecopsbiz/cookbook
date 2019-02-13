@@ -193,6 +193,8 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
 
         ![](img/AzureDevOpsLab-Builds-trigger.png)
 
+        ![](img/Save.png)
+
     ### OWASP Build
     
     Now we'll be using an alternative way to setup our CI build, leveraging a YAML file.
