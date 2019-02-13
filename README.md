@@ -189,9 +189,11 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
 
         ![](img/AzureDevOpsLab-Builds-05.png)
 
-    5. To finish, enable the *Continuous integration* trigger, saving the build after it:
+    5. To finish, enable the *Continuous integration* trigger:
 
         ![](img/AzureDevOpsLab-Builds-trigger.png)
+
+        Save by pressing the **Save** button, confirming the save on the popup:
 
         ![](img/Save.png)
 
@@ -200,6 +202,8 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
     Now we'll be using an alternative way to setup our CI build, leveraging a YAML file.
 
     Navigate to the *owasp-zap-vsts-extension* repository, and drag and drop the **azure-pipelines.yml** file, located on the Lab contents you've downloaded, under *~/files/OWASP*, into the repository.
+    Click on the **Commit** button to confirm.
+
     You should end up with the following contents:
 
     ![](img/OWASP-pipeline.png)
@@ -222,11 +226,11 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
 
         ![](img/AzureDevOpsLab-Releases-04.png)
 
-    2. Navigate back to *All pipelines* and *Import a release pipeline*:
+    2. Navigate back to *All pipelines* and select **Import release pipeline**:
 
         ![](img/AzureDevOpsLab-Releases-05.png)
 
-    3. Drag and drop, or navigate, to select the **SmartHotel360_Website-Deploy.json** file:
+    3. Drag and drop, or navigate as before, to select the **SmartHotel360_Website-Deploy.json** file:
 
         ![](img/AzureDevOpsLab-Releases-06.png)
 
@@ -260,7 +264,7 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
         ![](img/ServiceConnectionFinish.png)
 
  
-    8. Going back to the *release pipeline*, the dropdown should now show you the brand new *Service connection*.
+    8. Going back to the *release pipeline* (should be on a previous tab on the browser), the dropdown should now show you the brand new *Service connection*.
 
         Select it.
         > If it hasn't loaded, press the refresh button on the right and then open the dropdown again.
@@ -284,10 +288,12 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
 
         ![](img/AzureDevOpsLab-Releases-trigger.png)
 
+    12. Press the **Save** button, confirming with the **OK** button.
+
 
 #### Run a test build
 
-1. In Azure DevOps, click on Builds, navigate to **Folders**, select each build and click the "Queue" button on the right upper corner.
+1. In Azure DevOps, click on Builds, navigate to **Folders** and, for each build, select it and press the "Queue" button on the right upper corner.
 
     ![](img/AzureDevOpsLab-Builds-Run-01.png)
 
