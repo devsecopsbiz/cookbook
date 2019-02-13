@@ -187,7 +187,7 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
 
         ![](img/AzureDevOpsLab-Builds-04.png)
   
-    4. Now select the *Source Repository* to the recently imported repository:
+    4. Now select the *Source Repository* `SmartHotel360-Website` to the recently imported repository:
 
         ![](img/AzureDevOpsLab-Builds-05.png)
 
@@ -411,6 +411,8 @@ OWASP is a worldwide not-for-profit organization dedicated to helping improve th
     Next, deploy a VM with that includes the Azure Docker VM extension from [this Azure Resource Manager template on GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu). When prompted, provide your own unique values for *adminUsername*, *adminPassword*, and *dnsNameForPublicIP*:
 
     > Replace the name of the resource group with the one you got previously
+    
+    > *dnsNameForPublicIP* will be your public VM name and must be unique.
 
     ```azurecli
     az group deployment create --resource-group <REPLACE HERE> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/docker-simple-on-ubuntu/azuredeploy.json
@@ -428,10 +430,10 @@ OWASP is a worldwide not-for-profit organization dedicated to helping improve th
     az vm show --resource-group <REPLACE HERE> --name myDockerVM --show-details --query [fqdns] --output tsv
     ```
 
-    SSH to your new Docker host. Provide your own username and DNS name from the preceding steps:
+    SSH to your new Docker host. **Provide your own** username and DNS name from the preceding steps:
 
     ```
-    ssh azureuser@mypublicdns.eastus.cloudapp.azure.com
+    ssh <azureuser>@<mypublicdns.eastus.cloudapp.azure.com>
     ```
 
     Once logged in to the Docker host, let's run an NGINX container:
