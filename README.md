@@ -61,8 +61,11 @@ This lab will guide you through the initial setup of an Azure DevOps Project, pr
 The first required step is to clone the public GitHub repository where the Lab is hosted.
 This will allow you to have access to several pre-prepared assets, necessary for the different Lab modules we'll be implementing.
 
-Search for *x64_x86 Cross Tools Prompt for VS 2017*, launching it in *Administrator mode*.
-Navigate to the root folder, by executing `cd\`, and then execute the following command:
+On the lab windows, press the *Windows* start menu and search for *x64_x86 Cross Tools Prompt for VS 2017*, launching it in *Administrator mode*.
+
+![](img/CommandLine.png)
+
+Navigate to the root folder, by typing `cd\` and pressing *enter*. Then execute the following command:
 
 ```
 git clone https://github.com/devsecopsbiz/technical-lab.git
@@ -77,17 +80,19 @@ And you will get all the content on the *C:\technical-lab* folder, as shown in t
 >  Use Azure DevOps Labs to create a preconfigured project and enrich it for a quick start.
 
 * Start by creating a new Project using a preselected Lab.
-For that, navigate to the following URL:
+For that, on your browser navigate to the following URL:
 
     ```
     https://azuredevopsdemogenerator.azurewebsites.net/?name=WhiteSource-Bolt&templateid=77362
     ```
 
-    1. Navigate to the Azure DevOps Demo Generator and *Sign In* with the credentials you've used to create the Azure DevOps Organization:
+    1. Navigate to the Azure DevOps Demo Generator and *Sign In* with the credentials you've used to create the Azure DevOps Organization, and then press the **Accept** button to proceed.
     
         ![Azure DevOps Lab Sign In](img/AzureDevOpsLab-SignIn.png)
 
-    2. Select your Organization from the dropdown, fill in the Project Name, and *Create Project*:
+    2. Select your Organization from the dropdown, fill in the *Project Name* with a name of your choice.
+    
+        Check the check-box allowing *WhiteSource Bolt* to be installed and then press *Create Project*:
 
         ![](img/AzureDevOpsLab-CreateProject-01.png)
     
