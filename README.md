@@ -583,7 +583,7 @@ Start by adding two **SSH** tasks, one for running the tests and another for pub
 5. Paste this command on the *Script* text box as seen in the image, adapting the URI on the Echo command. 
 
     ```
-    $(System.DefaultWorkingDirectory)/_owasp-zap-vsts-extension/drop/owasp-zap-vsts-tool/bin/Release/owasp-zap-vsts-tool.exe attachreport collectionUri="$(System.TeamFoundationCollectionUri)" teamProjectName="$(System.TeamProject)" releaseUri=$(Release.ReleaseUri) releaseEnvironmentUri=$(Release.EnvironmentUri) filepath=$(System.DefaultWorkingDirectory)\OwaspZapReport.html personalAccessToken=$(PAT)
+    $(System.DefaultWorkingDirectory)/_owasp-zap-vsts-extension CI/drop/owasp-zap-vsts-tool/bin/Release/owasp-zap-vsts-tool.exe attachreport collectionUri="$(System.TeamFoundationCollectionUri)" teamProjectName="$(System.TeamProject)" releaseUri=$(Release.ReleaseUri) releaseEnvironmentUri=$(Release.EnvironmentUri) filepath=$(System.DefaultWorkingDirectory)\OwaspZapReport.html personalAccessToken=$(PAT)
 
     echo "http://<msreadydockervm>.<eastus>.cloudapp.azure.com/$(Release.DefinitionName)_$(Release.ReleaseName)_OwaspZapReport.html"
     ```
