@@ -368,9 +368,9 @@ OWASP is a worldwide not-for-profit organization dedicated to helping improve th
 1. Start by setting up a Docker host for later use:
 
     ## Deploy a template with the Azure Docker VM extension
-    Let's use an existing quickstart template to create an Ubuntu VM that uses the Azure Docker VM extension to install and configure the Docker host. You can view the template here: [Simple deployment of an Ubuntu VM with Docker](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu). 
+    Let's use an existing quickstart template to create an Ubuntu VM that uses the Azure Docker VM extension to install and configure the Docker host.
 
-    You need to login onto the [Azure Portal](https://portal.azure.com), and access the Cloud Shell, setting it up to *Bash*.
+    You need to login onto the Azure Portal (`https://portal.azure.com`), and access the Cloud Shell, setting it up to *Bash*.
 
     ![](img/AzureCloudShell.png)
 
