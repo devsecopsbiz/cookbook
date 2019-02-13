@@ -537,7 +537,14 @@ Start by adding two **SSH** tasks, one for running the tests and another for pub
 
     ![](img/Add-OWASP-tasks-navigate.png)
 
-    4.1. For the first `SSH` task, we need to specify the command to run and check the `Continue on error` option. This is required due to possible failing tests, that we don't want to prevent the deployment to proceed.
+    4.1. Before going further we need to configure the SSH service connection to the provisioned Docker machine.
+    Press the *Manage* button, *New service connection*, *SSH*, and fill in the following details, replacing *Host name*, *User name* and *Password* with your own details, specified on the previous steps of this lab.
+
+    ![](img/SSH-service-connection.png)
+
+    Press *OK* and go back to the previous tab, on the release pipeline. Refresh the *SSH service connection* drop down and select the fresh new connection. 
+
+    4.2. For the first `SSH` task, we need to specify the command to run and check the `Continue on error` option. This is required due to possible failing tests, that we don't want to prevent the deployment to proceed.
 
     ![](img/SSH-ZAP-test.png)
 
@@ -548,13 +555,6 @@ Start by adding two **SSH** tasks, one for running the tests and another for pub
     ```
     docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-weekly zap-baseline.py -t $(SmartHotelWebsiteURL) -g gen.conf -r $(Release.DefinitionName)_$(Release.ReleaseName)_OwaspZapReport.html
     ```
-
-    4.2. Before going further we need to configure the SSH service connection to the provisioned Docker machine.
-    Press the *Manage* button, *New service connection*, *SSH*, and fill in the following details, replacing *Host name*, *User name* and *Password* with your own details, specified on the previous steps of this lab.
-
-    ![](img/SSH-service-connection.png)
-
-    Press *OK* and go back to the previous tab, on the release pipeline. Refresh the *SSH service connection* drop down and select the fresh new connection. 
 
     4.3. On the second `SSH` task insert the following command:
 
