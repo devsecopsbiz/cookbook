@@ -297,7 +297,7 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
 
     ![](img/AzureDevOpsLab-Builds-Run-01.png)
 
-2. Monitor the build logs and wait for it to complete
+2. Monitor the build logs, by double clicking the running build, and wait for it to complete
 
    ![](img/AzureDevOpsLab-Builds-Run-end.png)
 
