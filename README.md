@@ -259,6 +259,8 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
 
         Select the available *resource group* from the dropdown, give the service connection a name and press OK.
 
+        > Important: Save the Resource Group name for later use (copy to notepad for example).
+
         ![](img/ServiceConnectionConfig.png)
 
         You should then see a new Service connection appear:
@@ -278,21 +280,29 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
 
         > For the *ARM Outputs* task in particular, it's also required to specify the *Azure Connection Type* as **Azure Resource Manager**
 
-    9. Remove the existing *Artifact*.
+    9. Navigate to *Variables* and update the values.
+
+        **location:** West US
+        
+        **ResourceGroup:** <paste the resource group we've saved earlier>
+
+        ![](img/VariablesUpdate.png)
+
+    10. Remove the existing *Artifact*.
 
         ![](img/RemoveArtifact.png)
 
-    10. Now, add the **SmartHotel_Petchecker-Web** build artifact. This will make sure we're using the artifact coming from the build we've created before.
+    11. Now, add the **SmartHotel_Petchecker-Web** build artifact. This will make sure we're using the artifact coming from the build we've created before.
 
         > Important: set the *Source alias* to `SmartHotel Petchecker Web`
 
         ![](img/AddArtifact.png)
 
-    11. To finish, enable the Continuous Deployment trigger
+    12. To finish, enable the Continuous Deployment trigger
 
         ![](img/AzureDevOpsLab-Releases-trigger.png)
 
-    12. Press the **Save** button, confirming with the **OK** button.
+    13. Press the **Save** button, confirming with the **OK** button.
 
 
 #### Run a test build
@@ -505,7 +515,7 @@ OWASP is a worldwide not-for-profit organization dedicated to helping improve th
     **Name:** PAT
 
     **Value:** <copied PAT token>
-    
+
     **Secret:** press the locker button, making it a secret, hiding the contents
 
     You should get the following configuration:
