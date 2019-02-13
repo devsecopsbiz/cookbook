@@ -187,7 +187,7 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
 
         ![](img/AzureDevOpsLab-Builds-04.png)
   
-    4. Now select the *Source Repository* `SmartHotel360-Website` to the recently imported repository:
+    4. Now select the *Source Repository* `SmartHotel360-Website`, the recently imported repository:
 
         ![](img/AzureDevOpsLab-Builds-05.png)
 
@@ -284,7 +284,7 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
 
         **location:** West US
 
-        **ResourceGroup:** <paste the resource group we've saved earlier>
+        **ResourceGroup:** <paste the resource group we've saved earlier: e.g. ResourceGroupXXXXX>
 
         ![](img/VariablesUpdate.png)
 
@@ -394,7 +394,7 @@ OWASP is a worldwide not-for-profit organization dedicated to helping improve th
 
     ![](img/CloudShellStorageAdvanced.png)
 
-    After a few seconds you should see something like this:
+    After a few seconds you should see something like:
 
     ![](img/AzureCloudShellBash-ready.png)
 
@@ -476,11 +476,10 @@ OWASP is a worldwide not-for-profit organization dedicated to helping improve th
 
 2. Before proceeding any further, let's run a OWASP ZED Attack Proxy against our published website.
 
-    > Note: Replace the website URI with the one you've deployed earlier  
+    > Note: Replace the website URI with the one you've deployed earlier. e.g. *https://smarthotel360lcu4bmxi7kl4w.azurewebsites.net* 
 
     ```
-    docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-weekly zap-baseline.py \
-        -t https://smarthotel360lcu4bmxi7kl4w.azurewebsites.net -g gen.conf -r testreport.html
+    docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-weekly zap-baseline.py -t <REPLACE HERE> -g gen.conf -r testreport.html
     ```
     Docker image will be pulled and the container will be then executed.
 
