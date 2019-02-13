@@ -529,13 +529,13 @@ OWASP is a worldwide not-for-profit organization dedicated to helping improve th
 4. Let's get back to the Release pipeline and add some extra tasks to launch the ZAP test and grab the results.
 Start by adding two **SSH** tasks, one for running the tests and another for publishing the test report to a public website. 
 
-    Under `Pipeline`, `Stages`, view stage tasks:
-
-    ![](img/Add-OWASP-tasks-navigate.png)
-
-    Add a new Artifact, from the *owasp-zap-vsts-extension* build, as shown in the following image:
+    Under `Pipeline`, add a new Artifact, from the *owasp-zap-vsts-extension* build, as shown in the following image:
 
     ![](img/Artifact-owasp-zap-vsts-extension.png)
+
+    Now, *view stage tasks*: 
+
+    ![](img/Add-OWASP-tasks-navigate.png)
 
     4.1. For the first `SSH` task, we need to specify the command to run and check the `Continue on error` option. This is required due to possible failing tests, that we don't want to prevent the deployment to proceed.
 
