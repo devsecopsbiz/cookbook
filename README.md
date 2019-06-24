@@ -16,13 +16,9 @@ This lab session builds on top of _R-AIST216 Dev*Ops: Digging into the trends of
 * Then, [create an Azure DevOps Project](#AzDevOps) for us to work in
 * Now let's [setup the build and release for the application](#CICD)
 * Next, we'll want to [include Security into the pipeline](#Security)
-* And to wrap up, let's [gather Business information](#Business)
+* To wrap up, let's [gather Business information](#Business)
+* And share it with a broader team and stakeholders using [Power BI](#PBI) and [Microsoft Teams](#Teams) 
 
-
-> Optional: Connect Azure DevOps to Power BI by [creating an approved bugs report in Power BI based on a custom Analytics view](#PBI)
-
-> Optional: Connect Azure DevOps to Microsoft Teams and [increase communication and collaboration in your team](#Teams)
-*********
 
 <a name="AzDevOpsOrg"></a>
 # Lab: Create Azure DevOps Organization 
@@ -859,21 +855,19 @@ Analytics views provide you with a great deal of power and flexibility to filter
 **[Microsoft Teams](https://teams.microsoft.com/start)** is a hub for teamwork in Office 365. Keep all your team's chats, meetings, files, and apps together in one place. Software development teams get instant access to everything they need in a dedicated
 hub for teamwork, that brings your teams, conversations, content and tools from across Office 365 and Azure DevOps together into one place.
 
-{% include note.html content= "This topic applies to Azure DevOps Services and to TFS 2017.2 and later versions." %}
-
 ## Prerequisites
 
 1. You should have Office365 account in order to integrate **Azure DevOps Services** with **Microsoft Teams**.
 
 1. Only Azure DevOps organizations in the same organization (AAD tenant) can be used to integrate with your Microsoft Teams account.
 
-**You can start a free trial if you don't have Office365 account from [here](https://teams.microsoft.com/start){:target="_blank"}**
+**You can start a free trial if you don't have Office365 account from [here](https://teams.microsoft.com/start)**
 
 In this lab, you’ll learn about how **Azure DevOps** integrates with **Microsoft Teams** to provide a comprehensive chat and collaboration experience, across your Agile and development work.
 
 ## Getting started with Microsoft Teams
 
-1. Launch **Microsoft Teams** - you can either open the web app or download the app to your desktop from [here](https://teams.microsoft.com/dl/launcher/launcher.html?url=/_%23/l/home/0/0&type=home){:target="_blank"}
+1. Launch **Microsoft Teams** - you can either open the web app or download the app to your desktop from [here](https://teams.microsoft.com/dl/launcher/launcher.html?url=/_%23/l/home/0/0&type=home)
 
    ![](img/launch_teams.png)
 
@@ -937,14 +931,13 @@ These can be added using Tabs. **Tabs** allow team members to access your servic
    ![](img/azuredevops_tab.png)
 
  
-
 1. Select the Organization
 
    ![](img/kanban_selectorg.png)
 
    ![](img/kanban_selectorg2.png)
 
-   {% include note.html content= " The Kanban board and Dashboard integration has the following limitations:
+   The Kanban board and Dashboard integration has the following limitations:
 
     1. Only works for Azure DevOps Services (Team Foundation Server is not supported)
 
