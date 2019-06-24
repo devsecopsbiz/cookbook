@@ -1,9 +1,9 @@
 [![Build Status](https://dev.azure.com/MSREADY19Sandbox/devsecopsbiz-session/_apis/build/status/GitHub_LabMDBuild?branchName=master)](https://dev.azure.com/MSREADY19Sandbox/devsecopsbiz-session/_build/latest?definitionId=12&branchName=master)
 
-# Microsoft Ready, Feb 2019
-## AI-APP-ST300: Hands on Dev*Ops (Dev-Sec-Ops-Biz) 
+# Microsoft Ready, July 2019
+## R-AIST307-P1: Dev*Ops: Hands on DevSecOps and DevOpsBiz cookbook 
 
-**Welcome to Technical Lab for the AI-APP-ST300: Hands on Dev*Ops session!**
+**Welcome to Dev*Ops: Hands on DevSecOps and DevOpsBiz cookbook!**
 
 DevOps has been propagating throughout the world as the place to be in order to be Agile and successful. 
 As maturity sets in, new challenges start to come up, namely the security role and the integration with the business teams. 
