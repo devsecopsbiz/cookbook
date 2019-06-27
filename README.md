@@ -117,9 +117,9 @@ For that, on your browser navigate to the following URL:
 
     5. As for the previous extension, select the recently created Azure DevOps Organization on the dropdown, and press *Install*.
 
-    6. After a few seconds you should see a success message. Now, select the *Proceed to organization*.
+    6. After a few seconds you should see a success message. Select the *Proceed to organization*.
 
-    7. Now, select the project you've just created, by pressing the name.
+    7. Now, select the project you've just created, by pressing its name.
 
 
 * Create a free account for *WhiteSource Bolt* 
@@ -145,8 +145,18 @@ For that, on your browser navigate to the following URL:
 
         ![](img/AzureDevOpsLab-ImportRepo-CloneURL.png)
 
+        Wait for a couple of seconds for it to finish.
+
     3. Select *Import repository* again, now filling with     `https://github.com/Deliveron/owasp-zap-vsts-extension.git`
     and press *Import*.
+
+        TROCAR POR UM REPOSITÓRIO NOSSO POR CAUSA DOS TESTES E OUTRAS SITUAÇÕES QUE POSSAM ACONTECER
+
+        ![](FALTA)
+
+    4. You should now see the complete list of repositories available has shown in the following image:
+
+        ![](FALTA)
 
 
 ## Next step:  
@@ -162,12 +172,13 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
 
 ## Create Build Pipeline
 
-* Wait a few seconds for the import process to finish and navigate to *Pipelines*, *Builds*:
+* Navigate to *Pipelines*, *Builds*.
 
     ![](img/AzureDevOpsLab-Builds-01.png)
 
     ### WhiteSource Bolt Build
-    1. Under *New*, select *Import a pipeline* to import a precooked pipeline to build the recently imported repository:
+    1. Here you should see an existing build definition name *WhiteSourceBolt*.
+    Under *New*, select *Import a pipeline* to import a precooked pipeline to build the recently imported SmartHotel repository:
 
         ![](img/AzureDevOpsLab-Builds-02.png)
         
@@ -175,8 +186,10 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
 
         ![](img/AzureDevOpsLab-Builds-03.png)
 
-        Change the *Name*, removing the *-import* part.
-        The final name should be **SmartHotel_Petchecker-Web**, as shown in the image:
+        ```
+        Change the Name, removing the "-import" portion of it.
+        The final name should be "SmartHotel_Petchecker-Web", as shown in the image:
+        ``` 
 
         ![](img/AzureDevOpsLab-Builds-031.png)
     
@@ -184,15 +197,15 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
 
         ![](img/AzureDevOpsLab-Builds-04.png)
   
-    4. Now select the *Source Repository* `SmartHotel360-Website`, the recently imported repository:
+    4. Now select the *Source Repository* `SmartHotel360-Website`, by pressing *Get sources*, *Azure Repos Git* and selecting the correct repository on the *Repository* dropdown:
 
         ![](img/AzureDevOpsLab-Builds-05.png)
 
-    5. To finish, enable the *Continuous integration* trigger:
+    5. To finish, enable the *Continuous integration* trigger by navigating to *Triggers* and selecting *Enable continuous integration*:
 
         ![](img/AzureDevOpsLab-Builds-trigger.png)
 
-        Save by pressing the **Save** button, confirming the save on the popup:
+        Save by pressing the **Save** button, confirming the save on the popup (no neeed to change anything on the *Select folder* or add a Comment):
 
         ![](img/Save.png)
 
@@ -207,7 +220,8 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
 
     ![](img/OWASP-pipeline.png)
 
-    This will generate the following build pipeline:
+    This will generate an additional build pipeline, now available together with the remaining ones.
+    Navigate back to *Pipelines*, *Builds* to double check:
 
     ![](img/OWASP-build.png)
 
@@ -285,7 +299,7 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
 
         ![](img/VariablesUpdate.png)
 
-    10. Remove the existing *Artifact*.
+    10. Remove the existing *Artifact* by navigating back to the *Pipeline* tab, selecting the Artifact, and pressing *Delete*.
 
         ![](img/RemoveArtifact.png)
 
@@ -313,7 +327,7 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
 
    ![](img/AzureDevOpsLab-Builds-Run-end.png)
 
-3. The release will be triggered automatically when the build is complete (be patient, this can take some time). Review the results as it is complete. 
+3. The release will be triggered automatically when the build is complete (be patient, this can take some time). Review the results as it completes. 
 
    ![](img/AzureDevOpsLab-Releases-Run-executing.png)
 
@@ -352,7 +366,7 @@ This lab will guide you through adding some Security validations into our pipeli
 
 ## Review WhiteSource Bolt task configurations on Build
 
-*WhiteSource Bolt for Azure DevOps* is a FREE extension, which scans all your projects and detects open source components, their license and known vulnerabilities.
+*WhiteSource Bolt for Azure DevOps* is a free extension, which scans all your projects and detects open source components, their license and known vulnerabilities.
 
 It covers over 200 programming languages support and continuous tracking of multiple open source vulnerabilities databases like the NVD, security advisories, peer-reviewed vulnerability databases, and popular open source projects issue trackers.
 
@@ -360,7 +374,7 @@ It covers over 200 programming languages support and continuous tracking of mult
 
 1. In Azure DevOps, click on "Pipelines" on the left menu and then click "Builds"
 
-2. Select each build pipeline, click the "Edit" button, and select the **WhiteSource Bolt** task
+2. Select the *SmartHotel_Petchecker-Web* and *WhiteSourceBolt* build pipelines, clicking the "Edit" button for each, and select the **WhiteSource Bolt** task. Review it.
 
     ![](img/AzureDevOpsLab-Builds-WhiteSourceBolt.png)
 
@@ -406,16 +420,20 @@ OWASP is a worldwide not-for-profit organization dedicated to helping improve th
 
     ![](img/RGName.png)
 
-    Next, deploy a VM with that includes the Azure Docker VM extension from [this Azure Resource Manager template on GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu). When prompted, provide your own unique values for *adminUsername*, *adminPassword*, and *dnsNameForPublicIP*:
+    Next, deploy a VM with that includes the Azure Docker VM extension from an Azure Resource Manager template from GitHub. 
 
-    > Replace the name of the resource group with the one you got previously
-    
-    > *dnsNameForPublicIP* will be your public VM name and must be unique.
+    On the bash cloud shell, run the following command providing, when prompted, your own unique values for *adminUsername*, *adminPassword*, and *dnsNameForPublicIP*.
+
+    > Replace the name of the resource group with the one you got previously.     
+    > And *dnsNameForPublicIP* will be your public VM name and must be unique.
+
+    Command to execute:
 
     ```azurecli
-    az group deployment create --resource-group <REPLACE HERE> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/docker-simple-on-ubuntu/azuredeploy.json
+    az group deployment create --resource-group <REPLACE HERE> --template-uri https://raw.githubusercontent.com/devsecopsbiz/azure-quickstart-templates/f99d00825b32577a5321f4e91ca07e0f914c3aa6/docker-simple-on-ubuntu/azuredeploy.json
     ```
 
+    
     It takes a few minutes for the deployment to finish.
 
 
