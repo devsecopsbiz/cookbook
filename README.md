@@ -147,16 +147,16 @@ For that, on your browser navigate to the following URL:
 
         Wait for a couple of seconds for it to finish.
 
-    3. Select *Import repository* again, now filling with     `https://github.com/Deliveron/owasp-zap-vsts-extension.git`
+        ![](img/SmartHotelRepoWaitToFinish.png)
+
+    3. Select *Import repository* again, now filling with     `https://github.com/devsecopsbiz/owasp-zap-vsts-extension.git`
     and press *Import*.
 
-        TROCAR POR UM REPOSITÓRIO NOSSO POR CAUSA DOS TESTES E OUTRAS SITUAÇÕES QUE POSSAM ACONTECER
-
-        ![](FALTA)
+        ![](img/OWASP-Repo-import.png)
 
     4. You should now see the complete list of repositories available has shown in the following image:
 
-        ![](FALTA)
+        ![](img/AllReposImported.png)
 
 
 ## Next step:  
@@ -214,7 +214,12 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
     Now we'll be using an alternative way to setup our CI build, leveraging a YAML file.
 
     Navigate to the *owasp-zap-vsts-extension* repository, and drag and drop the **azure-pipelines.yml** file, located on the Lab contents you've downloaded, under *~/files/OWASP*, into the repository.
+
+    ![](img/OWASP-pipeline-dragdrop.png)
+
     Click on the **Commit** button to confirm.
+
+    ![](img/OwaspBuildConfirmCommit.png)
 
     You should end up with the following contents:
 
@@ -223,7 +228,7 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
     This will generate an additional build pipeline, now available together with the remaining ones.
     Navigate back to *Pipelines*, *Builds* to double check:
 
-    ![](img/OWASP-build.png)
+    ![](img/BuildListAfterImports.png)
 
 
 ## Create Release Pipeline
@@ -319,9 +324,9 @@ For the release pipeline we'll be leveraging ARM templates and Azure App Service
 
 #### Run a test build
 
-1. In Azure DevOps, click on Builds, navigate to **Folders** and, for each build, select it and press the "Queue" button on the right upper corner.
+1. In Azure DevOps, click on Builds and, for each build, select it and press the "Queue" button on the right upper corner.
 
-    ![](img/AzureDevOpsLab-Builds-Run-01.png)
+    ![](img/TestQueueBuilds.png)
 
 2. Monitor the build logs, by double clicking the running build, and wait for it to complete
 
