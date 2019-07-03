@@ -149,12 +149,12 @@ For that, on your browser navigate to the following URL:
 
         ![](img/SmartHotelRepoWaitToFinish.png)
 
-    3. Select *Import repository* again, now filling with     `https://github.com/devsecopsbiz/owasp-zap-vsts-extension.git`
+    3. Select *Import repository* again, now filling with     `https://github.com/devsecopsbiz/owasp-zap-vsts-extension`
     and press *Import*.
 
         ![](img/OWASP-Repo-import.png)
 
-    4. You should now see the complete list of repositories available has shown in the following image:
+    4. You should now see the complete list of repositories available, has shown in the following image:
 
         ![](img/AllReposImported.png)
 
