@@ -24,3 +24,14 @@ addwidget
 iscurrent
 powerbi
 dataset
+dragdrop
+Kanban
+kanbanboard
+AIST
+addfield
+resourcetype
+newview
+addfield
+azuredevops
+selectorg
+Finalconfig
