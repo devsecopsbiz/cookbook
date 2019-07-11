@@ -2,7 +2,8 @@ resources:
 - repo: self
 
 pool:
-  vmImage: Hosted VS2017
+  name: Hosted VS2017
+  
 steps:
 - task: ottostreifel.spellcheck-task.spellcheck.spellcheck@2
   displayName: 'Spellcheck **/*.md'
